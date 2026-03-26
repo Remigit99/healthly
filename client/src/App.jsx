@@ -1,12 +1,49 @@
+import { createBrowserRouter } from 'react-router'
+import { RouterProvider } from 'react-router-dom'
+import { RootLayout } from './Layouts/RootLayout';
+import Home from './pages/Home';
+import UserLayout from './Layouts/UserLayout';
 
-import './App.css'
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <RootLayout />,
+    children: [
+      // {
+      //   path: '/',
+      //   element: <Home />
+      // },
+
+
+      //USER ROUTES
+      {
+        path: '/',
+        element: <UserLayout />,
+        children: [
+          {
+            path: '/',
+            element: <Home />
+          }
+        ]
+      }
+
+
+
+
+
+    ]
+
+  }
+]);
+
 
 const App = () => {
   
 
   return (
     <>
-      <h1 className='text-amber-600 text-6xl'>Hello, Vite great!</h1>
+      <RouterProvider router={router} />
     </>
   )
 }
