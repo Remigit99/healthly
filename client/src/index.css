@@ -1,10 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Fira+Code:wght@300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
 
 @import "tailwindcss";
 
 body {
-  font-family: 'Fira Code', sans-serif;
+  font-family: 'Fira Code', 'Poppins', 'Dosis', 'Nunito', sans-serif;
 }
+
+
+@theme {
+
+  /** FONT FAMILIES **/
+
+  /* This creates the .font-heading utility */
+  --font-heading: "Fira Code", sans-serif;
+
+  /* This creates the .font-accent utility */
+  --font-accent: "Poppins", sans-serif ;
+
+
+  /** COLORS **/
+  --color-light1: #FFDACD;
+  --color-black1: #0B1115;
+  --color-orange5: #FF7F50;
+  --color-light2: #FFEDE6;
+  --color-orange1: #FFC8B4;
+  --color-orange2: #FFB69B;
+  --color-orange4: #FF9169;
+  --color-orange3: #FFA482;
+  --color-gray2: #36454F;
+  --color-gray1: #36454F80;
+
+  --text-h1: 72px;
+  --text-h2: 48px;
+  --text-h3: 40px;
+  --text-h4: 28px;
+  --text-h5: 24px;
+  --text-p: 20px;
+
+
+}
+
 
 /* light1-[#FFDACD] */
 /* black1 - #0B1115 */

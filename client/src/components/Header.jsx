@@ -7,10 +7,10 @@ const Header = () => {
 
 <div className="container mx-auto flex items-center justify-between py-12 px-12">
       <div className='relative'>
-        <h1 className='font-semibold text-6xl mb-4'>Smart Care</h1>
-        <h1 className='font-semibold text-6xl'>Warm Hearth</h1>
+        <h1 className='font-semibold text-h1'>Smart Care</h1>
+        <h1 className='font-semibold text-h1'>Warm Hearth</h1>
 
-        <p className='text-gray-500 my-8 w-1/2'>Your health, our priority.
+        <p className='text-gray2 text-p my-8 w-1/2 font-accent'>Your health, our priority.
            Experience compassionate care and personalized wellness
             solutions with us.
             </p> 
