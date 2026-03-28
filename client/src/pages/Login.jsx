@@ -8,7 +8,7 @@ const Login = () => {
         <p className="text-accent text-gray1 text-p-small mt-2 mb-12 flex justify-center items-center">
           Welcome back!
         </p>
-
+        
         <div>
           <form className="flex flex-col gap-6">
             <input
@@ -16,6 +16,7 @@ const Login = () => {
               name="email"
               id=""
               placeholder="Email"
+              autoFocus
               className="px-1 focus:border-green1 placeholder:text-accent placeholder:text-gray1 rounded  py-2 w-full outline-0 border border-gray1"
             />
             <input
