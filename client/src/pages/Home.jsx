@@ -9,6 +9,7 @@ import Record from "/record.png";
 import Prescribe from "/prescribe.png";
 import DrEmily from "/dr_emily.png";
 import DrMike from "/dr_mike.png";
+import Subscribe from "/subscribe.png"
 
 const Home = () => {
   return (
@@ -162,56 +163,98 @@ const Home = () => {
             Meet Your Provider
           </h1>
 
-          <div className="">
-            <div className="flex items-center justify-between">
+          <div className="py-20">
+            <div className="grid grid-cols-2 gap-24 items-center">
               <div>
                 <img src={DrEmily} alt="Dr. Emily Carter" />
               </div>
 
               <div>
-                <h3 className="font-bold text-h4 text-gray2">
+                <h3 className="font-bold text-h5 text-gray2">
                   Dr. Emily Carter, MD
                 </h3>
-                <h4 className="font-bold text-h5 text-gray2">
+                <h4 className="font-bold text-h6 text-gray2">
                   Board-Certified Pediatrician | 10+ Years Experience
                 </h4>
-                <p className="font-accent my-6 text-gray1 text-p w-3/4">
+                <p className="font-accent my-6 text-gray1 text-p-small w-3/4">
                   Dr. Emily Carter is a board-certified pediatrician with over a
                   decade of experience caring for infants, toddlers, and young
                   children. She specializes in preventive care, childhood
                   immunizations, and early development, helping parents make
                   confident decisions about their child’s health.
+                </p>
+
+                <div className="py-3">
                   <p>⭐ 4.9 • 1,200+ consultations</p>
                   <p>🕒 Available Mon–Fri</p>
-                </p>
+                </div>
               </div>
             </div>
           </div>
 
           <div className="">
-            <div className="flex items-center justify-between">
+            <div className="grid grid-cols-2 gap-24 items-center">
               <div>
-                <h3 className="font-bold text-h4 text-gray2">
+                <h3 className="font-bold text-h5 text-gray2">
                   Dr. Michael Thompson, MD, MPH
                 </h3>
-                <h4 className="font-bold text-h5 text-gray2"> 
+                <h4 className="font-bold text-h6 text-gray2">
                   Pediatric Telemedicine Specialist | 7+ Years Experience
                 </h4>
-                <p className="font-accent my-6 text-gray1 text-p w-3/4">
+                <p className="font-accent my-6 text-gray1 text-p-small  w-3/4">
                   Dr. Michael Thompson combines clinical expertise with digital
                   healthcare delivery, providing reliable virtual pediatric care
                   for families. His focus areas include nutrition guidance,
                   common childhood illnesses, and follow-up care, with an
                   emphasis on clear communication and parent education.
+                </p>
+
+                <div className="py-2">
                   <p>⭐ 4.8 • 850+ consultations</p>
                   <p>🕒 Available Tue–Sat</p>
-                </p>
+                </div>
               </div>
 
               <div>
                 <img src={DrMike} alt="Dr. Emily Carter" />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NEWSLETTER */}
+      <section className="bg-green-950 text-white py-12">
+        <div className="container mx-auto px-24 py-16 flex justify-between items-center">
+          <div>
+            <h3 className="text-h4 font-bold ">Because Every Parent </h3>
+            <h3 className="text-h4 font-bold "> Deserves to Know More.</h3>
+            <p className="text-p-small w-3/4 mt-6 mb-8">
+              Get expert health tips, parenting insights, and updates from our
+              medical team
+            </p>
+
+            <div className="mt-4">
+              <form className="flex gap-4 items-center">
+                <input type="email" placeholder="Enter Your Email Address" className="bg-white w-max rounded-md px-4 py-2 outline-0 placeholder:text-gray2 placeholder:font-accent"/>
+              <Link className="bg-light-green rounded-md px-4 py-2" to="/">Get Updated</Link>
+              </form>
+            </div>
+          </div>
+
+          <div>
+          <img src={Subscribe} alt="newsletter" />
+          </div>
+        </div>
+      </section>
+
+      {/* FAQs */}
+      <section>
+        <div className="container mx-auto px-24 py-16">
+          <h1>Frequently Asked Questions</h1>
+
+          <div>
+            
           </div>
         </div>
       </section>
