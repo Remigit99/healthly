@@ -10,6 +10,7 @@ import Prescribe from "/prescribe.png";
 import DrEmily from "/dr_emily.png";
 import DrMike from "/dr_mike.png";
 import Subscribe from "/subscribe.png"
+import Faqs from "../components/Faqs";
 
 const Home = () => {
   return (
@@ -249,15 +250,7 @@ const Home = () => {
       </section>
 
       {/* FAQs */}
-      <section>
-        <div className="container mx-auto px-24 py-16">
-          <h1>Frequently Asked Questions</h1>
-
-          <div>
-            
-          </div>
-        </div>
-      </section>
+     <Faqs/>
     </>
   );
 };
