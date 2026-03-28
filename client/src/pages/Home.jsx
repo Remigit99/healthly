@@ -11,6 +11,7 @@ import DrEmily from "/dr_emily.png";
 import DrMike from "/dr_mike.png";
 import Subscribe from "/subscribe.png"
 import Faqs from "../components/Faqs";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
@@ -251,6 +252,9 @@ const Home = () => {
 
       {/* FAQs */}
      <Faqs/>
+
+     {/* FOOTER */}
+     <Footer/>
     </>
   );
 };

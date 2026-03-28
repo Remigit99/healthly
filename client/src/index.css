@@ -35,6 +35,9 @@ body {
   --color-green1:  rgba(8, 47, 47, 1),
   --color-green2: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
   --color-light-green: #0E6B6B;
+  --color-white: #FFFFFF;
+  --color-light3: rgba(255, 237, 230, 1);
+
 
 
 
