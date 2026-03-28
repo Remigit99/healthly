@@ -6,7 +6,7 @@ import { CiInstagram } from "react-icons/ci";
 const Footer = () => {
   return (
     <footer className='bg-light3'>
-      <div className="container mx-auto px-12 py-8">
+      <div className="container mx-auto px-4 md:px-12 py-8">
 
         <div className='mb-12 flex md:flex-row flex-col items-start justify-between gap-8'>
             <div> 

@@ -5,12 +5,12 @@ const Header = () => {
   return (
     <header className="">
 
-<div className="container mx-auto flex items-center justify-between py-12 px-12">
+<div className="container mx-auto flex flex-col gap-16 md:items-center md:justify-between py-12 px-4 md:px-12">
       <div className='relative'>
-        <h1 className='font-semibold text-h1'>Smart Care</h1>
-        <h1 className='font-semibold text-h1'>Warm Hearth</h1>
+        <h1 className='font-semibold text-h2 md:text-h1'>Smart Care</h1>
+        <h1 className='font-semibold text-h2 md:text-h1'>Warm Hearth</h1>
 
-        <p className='text-gray2 text-p my-8 w-1/2 font-accent'>Your health, our priority.
+        <p className='text-gray2 text-p my-8 w-full md:w-1/2 font-accent'>Your health, our priority.
            Experience compassionate care and personalized wellness
             solutions with us.
             </p> 

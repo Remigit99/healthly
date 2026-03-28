@@ -20,12 +20,12 @@ const Home = () => {
 
       {/* WHY   CHOOSE HEALTHLY? */}
       <section>
-        <div className="container mx-auto px-12 pt-8 pb-16">
-          <h1 className="text-4xl font-semibold text-center my-12">
+        <div className="container mx-auto px-4 md:px-12 pt-8 pb-16">
+          <h1 className="text-h4 font-semibold text-center my-12">
             Why Choose Healthly?
           </h1>
 
-          <div className="grid grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <article className="border p-6 rounded-md shadow-md">
               <img src={PedCon} alt="icon" />
               <h3 className="font-semibold my-3">Pediatric Consultation</h3>
@@ -79,16 +79,16 @@ const Home = () => {
 
       {/* OUR SERVICES */}
       <section>
-        <div className="container mx-auto px-12 pt-8 pb-16">
-          <h1 className="text-h3 font-semibold text-center my-12">
+        <div className="container mx-auto px-4 md:px-12 pt-8 pb-16">
+          <h1 className="text-h3 font-semibold text-center mb-12">
             Our Services
           </h1>
 
           {/* ONE TAP BOOKING */}
-          <div className="flex items-center justify-between my-32">
+          <div className="md:flex md:items-center grid grid-cols-1 gap-12 md:justify-between ">
             <div>
               <h2 className="font-bold text-h4 text-gray2">One-Tap Booking</h2>
-              <p className="font-accent my-6 text-gray1 text-p w-3/4">
+              <p className="font-accent my-6 text-gray1 text-p-small w-full  md:w-3/4">
                 Book, reschedule, and manage appointments effortlessly
               </p>
 
@@ -103,14 +103,14 @@ const Home = () => {
           </div>
 
           {/* CARELINE */}
-          <div className="grid grid-cols-2 gap-24 items-center my-32">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center my-24">
             <div>
               <img src={CareLine} alt="care_line" />
             </div>
 
             <div>
               <h2 className="font-bold text-h4 text-gray2">Careline</h2>
-              <p className="font-accent my-6 text-gray1 text-p w-3/4">
+              <p className="font-accent my-3 text-gray1 text-p-small w-full  md:w-3/4">
                 High-definition, encrypted video calls for secure consultations.
               </p>
 
@@ -121,10 +121,10 @@ const Home = () => {
           </div>
 
           {/* RECORD+ */}
-          <div className="flex items-center justify-between my-32">
+          <div className="md:flex md:items-center grid grid-cols-1 gap-12 md:justify-between ">
             <div>
               <h2 className="font-bold text-h4 text-gray2">Record+</h2>
-              <p className="font-accent my-6 text-gray1 text-p w-3/4">
+              <p className="font-accent my-6 text-gray1 text-p-small w-full  md:w-3/4">
                 Secure access to your child's health records.
               </p>
 
@@ -139,14 +139,14 @@ const Home = () => {
           </div>
 
           {/* PRESCRIBER PRO */}
-          <div className="flex items-center justify-between my-32">
+          <div className="md:flex md:items-center grid grid-cols-1 gap-12 md:justify-between mt-24">
             <div>
               <img src={Prescribe} alt="prescribe" />
             </div>
 
             <div>
               <h2 className="font-bold text-h4 text-gray2">Prescriber Pro</h2>
-              <p className="font-accent my-6 text-gray1 text-p w-3/4">
+              <p className="font-accent my-6 text-gray1 text-p-small w-full  md:w-3/4">
                 Convenient prescription handling and renewals
               </p>
 
@@ -160,13 +160,13 @@ const Home = () => {
 
       {/* MEET YOUR PROVIDER */}
       <section>
-        <div className="container mx-auto px-12 pt-8 pb-16">
-          <h1 className="text-h3 font-semibold text-center my-9">
+        <div className="container mx-auto px-4 md:px-12 pt-8 pb-16">
+          <h1 className="text-h4 md:text-h3 font-semibold text-center mt-9 mb-2">
             Meet Your Provider
           </h1>
 
-          <div className="py-20">
-            <div className="grid grid-cols-2 gap-24 items-center">
+          <div className="py-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
               <div>
                 <img src={DrEmily} alt="Dr. Emily Carter" />
               </div>
@@ -178,7 +178,7 @@ const Home = () => {
                 <h4 className="font-bold text-h6 text-gray2">
                   Board-Certified Pediatrician | 10+ Years Experience
                 </h4>
-                <p className="font-accent my-6 text-gray1 text-p-small w-3/4">
+                <p className="font-accent my-6 text-gray1 text-p-small w-full  md:w-3/4">
                   Dr. Emily Carter is a board-certified pediatrician with over a
                   decade of experience caring for infants, toddlers, and young
                   children. She specializes in preventive care, childhood
@@ -195,7 +195,7 @@ const Home = () => {
           </div>
 
           <div className="">
-            <div className="grid grid-cols-2 gap-24 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
               <div>
                 <h3 className="font-bold text-h5 text-gray2">
                   Dr. Michael Thompson, MD, MPH
@@ -203,7 +203,7 @@ const Home = () => {
                 <h4 className="font-bold text-h6 text-gray2">
                   Pediatric Telemedicine Specialist | 7+ Years Experience
                 </h4>
-                <p className="font-accent my-6 text-gray1 text-p-small  w-3/4">
+                <p className="font-accent my-6 text-gray1 text-p-small w-full  md:w-3/4">
                   Dr. Michael Thompson combines clinical expertise with digital
                   healthcare delivery, providing reliable virtual pediatric care
                   for families. His focus areas include nutrition guidance,
@@ -227,24 +227,24 @@ const Home = () => {
 
       {/* NEWSLETTER */}
       <section className="bg-green-950 text-white py-12">
-        <div className="container mx-auto px-24 py-16 flex justify-between items-center">
+        <div className="container mx-auto px-8 md:px-24 py-16 md:flex md:justify-between md:items-center">
           <div>
-            <h3 className="text-h4 font-bold ">Because Every Parent </h3>
-            <h3 className="text-h4 font-bold "> Deserves to Know More.</h3>
-            <p className="text-p-small w-3/4 mt-6 mb-8">
+            <h3 className="text-h5 md:text-h4 font-bold ">Because Every Parent </h3>
+            <h3 className="text-h5 md:text-h4 font-bold "> Deserves to Know More.</h3>
+            <p className="text-p-small w-full md:w-3/4 mt-6 mb-8">
               Get expert health tips, parenting insights, and updates from our
               medical team
             </p>
 
             <div className="mt-4">
-              <form className="flex gap-4 items-center">
+              <form className="flex gap-4 flex-col md:items-center">
                 <input type="email" placeholder="Enter Your Email Address" className="bg-white w-max rounded-md px-4 py-2 outline-0 placeholder:text-gray2 placeholder:font-accent"/>
-              <Link className="bg-light-green rounded-md px-4 py-2" to="/">Get Updated</Link>
+              <Link className="bg-light-green rounded-md w-32 px-2 md:px-4 py-2" to="/">Get Updated</Link>
               </form>
             </div>
           </div>
 
-          <div>
+          <div className="hidden md:block">
           <img src={Subscribe} alt="newsletter" />
           </div>
         </div>

@@ -34,10 +34,12 @@ const Faqs = () => {
 
   return (
     <section>
-      <div className="container mx-auto px-24 py-16">
-        <h1 className="text-h4 flex justify-center items-center font-semibold mb-8">Frequently Asked Questions</h1>
+      <div className="container mx-auto px-4 md:px-12 py-16">
 
-        <div className="mx-auto max-w-2xl md:max-w-3xl divide-y divide-gray-200 rounded-xl border border-gray-200 bg-white shadow-sm">
+        <div className="flex justify-center items-center">
+        <h1 className="text-h5 md:text-h4  font-semibold mb-8">Frequently Asked Questions</h1>
+</div>
+        <div className="mx-auto max-w-4xl divide-y divide-gray-200 rounded-xl border border-gray-200 bg-white shadow-sm">
           {faqs.map((faq, index) => {
             const isOpen = activeIndex === index;
 
