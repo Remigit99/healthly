@@ -1,5 +1,5 @@
 import HeroImg from "/hero_main_img.png"
-import HeroSvg from "/hero_svg.svg"
+import HeroSvg from "/doll2.png"
 
 const Header = () => {
   return (
