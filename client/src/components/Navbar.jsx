@@ -3,7 +3,7 @@ import HealthlyLogo from "/echomed_logo.svg"
 
 const Navbar = () => {
   return (
-    <nav className="sticky top-0 left-0 right-0 h-16 w-full bg-amber-200 flex justify-between items-center">
+    <nav className="sticky z-100 top-0 left-0 right-0 h-16 w-full bg-amber-200 flex justify-between items-center">
         <div className="container mx-auto flex justify-between items-center px-4">
         {/* Logo */}
         <Link to="/">

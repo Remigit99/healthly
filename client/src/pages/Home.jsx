@@ -237,9 +237,9 @@ const Home = () => {
             </p>
 
             <div className="mt-4">
-              <form className="flex gap-4 flex-col md:items-center">
+              <form className="flex gap-4 flex-col  md:flex-row">
                 <input type="email" placeholder="Enter Your Email Address" className="bg-white w-max rounded-md px-4 py-2 outline-0 placeholder:text-gray2 placeholder:font-accent"/>
-              <Link className="bg-light-green rounded-md w-32 px-2 md:px-4 py-2" to="/">Get Updated</Link>
+              <Link className="bg-light-green rounded-md w-32 md:w-36 px-2 md:px-4 py-2" to="/">Get Updated</Link>
               </form>
             </div>
           </div>
