@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 import MedDev from "/med_dev.svg";
 import PedCon from "/pedcon.svg";
 import MedServe from "/med_service.svg";
@@ -10,8 +10,8 @@ import Prescribe from "/prescribe.png";
 import DrEmily from "/dr_emily.png";
 import DrMike from "/dr_mike.png";
 import Subscribe from "/subscribe.png"
-import Faqs from "../components/Faqs";
-import Footer from "../components/Footer";
+import Faqs from "../../components/Faqs";
+import Footer from "../../components/Footer";
 
 const Home = () => {
   return (
