@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 // REGISTER USER CONTROLLER
 export const registerUser = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { firstName, lastName, email, password } = req.body;
 
     // Check if user already exists
     const existingUser = await User.findOne({ email });
@@ -17,7 +17,8 @@ export const registerUser = async (req, res) => {
 
     // Create new user
     const newUser = new User({
-      name,
+      firstName,
+      lastName,
       email,
       password: hashedPassword
     });
