@@ -27,6 +27,10 @@ const userSchema = new mongoose.Schema({
   isActive: { type: Boolean, default: true },
   lastLogin: Date,
 
+  isVerified: { type: Boolean, default: false },
+  verificationToken: String,
+  verificationTokenExpires: Date,
+
   // refreshTokens
   refreshTokens: [
     {
