@@ -2,7 +2,7 @@ import { createBrowserRouter, Navigate } from "react-router";
 import RoleGuard from "./components/auth/RoleGuard";
 
 // LAYOUTS (The "Shells")
-import PublicLayout from "./layouts/PublicLayout";   // Navbar for everyone
+import PublicLayout from "./Layouts/PublicLayout";   // For non-authenticated users
 // import AppLayout from "./layouts/AppLayout";         // Sidebar for logged-in users
 
 // PAGES
