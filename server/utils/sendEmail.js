@@ -14,8 +14,14 @@ const sendEmail = async (options) => {
       pass: process.env.SMTP_PASS,
     },
 
+    // FORCE IPv4 ONLY
+  lookup: (hostname, options, callback) => {
+    dns.lookup(hostname, { family: 4 }, callback);
+  },
+
     tls: {
-    ciphers: 'SSLv3',
+      minVersion: 'TLSv1.2',
+    // ciphers: 'SSLv3',
     rejectUnauthorized: false
   },
 
