@@ -7,19 +7,24 @@ const sendEmail = async (options) => {
   // 1. Create a transporter
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
-    port: 586,
+    port: 587,
     secure: false,
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
     },
 
+    tls: {
+    ciphers: 'SSLv3',
+    rejectUnauthorized: false
+  },
+
     // ADD THIS LINE TO FIX THE ENETUNREACH ERROR
-    connectionTimeout: 10000,
-    greetingTimeout: 10000,
-    dnsLookup: (hostname, options, callback) => {
-      require("dns").lookup(hostname, { family: 4 }, callback); // Force IPv4
-    },
+  //   connectionTimeout: 10000,
+  //   greetingTimeout: 10000,
+  //   dnsLookup: (hostname, options, callback) => {
+  //     require("dns").lookup(hostname, { family: 4 }, callback); // Force IPv4
+  //   },
   });
 
   const mailOptions = {
