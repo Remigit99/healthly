@@ -10,7 +10,7 @@ import crypto from "crypto";
 // REGISTER USER CONTROLLER
 export const registerUser = async (req, res) => {
   try {
-    const { firstName, lastName, email, password } = req.body;
+    const { firstName, lastName, email, password, role } = req.body;
 
     //  Check if user exists
     const existingUser = await User.findOne({ email });

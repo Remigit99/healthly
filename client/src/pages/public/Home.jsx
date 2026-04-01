@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import Header from "../../components/Header";
 import MedDev from "/med_dev.svg";
 import PedCon from "/pedcon.svg";

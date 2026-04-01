@@ -20,6 +20,8 @@ app.use("/api/user", router)
 
 const PORT = process.env.PORT || 3300
 
+// console.log(process.env.FRONTEND_URL)
+
 app.listen(PORT, async() => {
     await connectDB()
   console.log(`Server is running on port ${PORT}`)

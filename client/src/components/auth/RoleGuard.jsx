@@ -1,4 +1,4 @@
-import { useLocation, Navigate, Outlet } from "react-router-dom";
+import { useLocation, Navigate, Outlet } from "react-router";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../store/features/auth/authSlice";
 

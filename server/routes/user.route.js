@@ -11,7 +11,7 @@ router.post("/register", registerUser);
 router.post("/login", login);
 
 // VERIFY EMAIL ENDPOINT
- router.get("/verify-email", verifyEmail);
+ router.patch("/verify-email/:token", verifyEmail);
 
 
 export default router

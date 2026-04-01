@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router";
 import RoleGuard from "./components/auth/RoleGuard";
 
 // LAYOUTS (The "Shells")
@@ -9,6 +9,8 @@ import PublicLayout from "./layouts/PublicLayout";   // Navbar for everyone
 import Home from "./pages/public/Home";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
+import VerifyEmail from "./pages/auth/VerifyEmail";
+import GoVerifyEmail from "./pages/auth/GoVerifyEmail";
 // import Dashboard from "./pages/shared/Dashboard"; // We'll make this dynamic
 
 const router = createBrowserRouter([
@@ -19,7 +21,8 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
-      { path: "verify-email", element: <div className="p-10">Verifying...</div> },
+      {path: "go-verify-email", element: <GoVerifyEmail /> },
+      { path: "verify-email", element: <VerifyEmail /> },
     ],
   },
 
