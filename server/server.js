@@ -15,6 +15,10 @@ const allowedOrigins = [
   process.env.FRONTEND_URL_DEV
 ];
 
+
+const app = express()
+
+app.use(express.json())
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
@@ -24,10 +28,6 @@ app.use(cors({
     }
   }
 }));
-
-const app = express()
-app.use(express.json())
-
 
 app.use("/api/user", router)
 
