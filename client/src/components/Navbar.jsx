@@ -3,7 +3,7 @@ import HealthlyLogo from "/echomed_logo.svg"
 import { FaUserCircle, FaChevronDown } from "react-icons/fa";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectCurrentUser, logout } from "../store/features/auth/authSlice";
+import { selectCurrentUser, logOut } from "../store/features/auth/authSlice";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +11,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(logOut());
     setIsOpen(false);
   };
 
