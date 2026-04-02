@@ -57,7 +57,7 @@ export const registerUser = async (req, res) => {
     sendEmail(
       {
           email: newUser.email,
-          subject: "Verify your Healthly Account",
+          // subject: "Verify your Healthly Account",
           html: verificationEmailTemplate(newUser.firstName, vToken)
         }
     )

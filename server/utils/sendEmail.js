@@ -1,61 +1,35 @@
-import nodemailer from "nodemailer";
-import dotenv from "dotenv";
+import Resend from "resend";
+// import { verificationEmailTemplate } from "./emailTemplate";
 
-dotenv.config();
+// Initialize with your Render Env Var
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-const sendEmail = async (options) => {
-  // 1. Create a transporter
-  const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
+const sendVerificationEmail = async (email,html) => {
+  try {
+    const { data, error } = await resend.emails.send({
+      from: 'Healthly <onboarding@resend.dev>', // Resend provides this for testing
+      to: email,
+      subject: 'Verify your Healthly Account',
+      html: html,
+      // html: `
+      //   <h1>Welcome to Healthly!</h1>
+      //   <p>Please verify your email by clicking the link below:</p>
+      //   <a href="https://healthlyapp.netlify.app/verify-email?token=${token}">
+      //     Verify Email
+      //   </a>
+      // `,
+    });
 
-    // FORCE IPv4 ONLY
-  lookup: (hostname, options, callback) => {
-    dns.lookup(hostname, { family: 4 }, callback);
-  },
+    if (error) {
+      console.error("Resend Error:", error);
+      return { success: false, error };
+    }
 
-    tls: {
-      minVersion: 'TLSv1.2',
-    // ciphers: 'SSLv3',
-    rejectUnauthorized: false
-  },
-
-    // ADD THIS LINE TO FIX THE ENETUNREACH ERROR
-  //   connectionTimeout: 10000,
-  //   greetingTimeout: 10000,
-  //   dnsLookup: (hostname, options, callback) => {
-  //     require("dns").lookup(hostname, { family: 4 }, callback); // Force IPv4
-  //   },
-  });
-
-  const mailOptions = {
-    from: '"Healthly Team" <noreply@healthly.com>',
-    to: options.email,
-    subject: options.subject,
-    html: options.html,
-  };
-
-  //  Send the email
-  await transporter.sendMail(mailOptions);
+    return { success: true, data };
+  } catch (err) {
+    console.error("Critical Email Failure:", err);
+    return { success: false, err };
+  }
 };
 
-export default sendEmail;
-
-// Implementation for sending verification email
-// export const sendVerificationEmail = async (user) => {
-// Create a transporter using SMTP
-// const transporter = nodemailer.createTransport({
-//   host: "Gmail",
-//   port: 587,
-//   secure: false, // use STARTTLS (upgrade connection to TLS after connecting)
-//   auth: {
-//     user: process.env.SMTP_USER,
-//     pass: process.env.SMTP_PASS,
-//   },
-// });
-// };
+module.exports = sendVerificationEmail;
