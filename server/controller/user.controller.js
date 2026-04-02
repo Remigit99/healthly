@@ -54,7 +54,7 @@ export const registerUser = async (req, res) => {
 
     // SEND THE EMAIL
 
-    sendEmail(
+    sendVerificationEmail(
       {
           email: newUser.email,
           // subject: "Verify your Healthly Account",
