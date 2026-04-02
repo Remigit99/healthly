@@ -22,7 +22,7 @@ const Login = () => {
   // Redirect if already logged in
   useEffect(() => {
     if (user) {
-      navigate(user.role === "parent" ? "/app/parent" : "/app/doctor");
+      navigate(user.role === "parent" ? "/" : "/app/doctor");
     }
   }, [user, navigate]);
 
