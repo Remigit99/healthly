@@ -38,7 +38,7 @@ const Login = () => {
       // 3. Clear inputs and navigate
       setEmail("");
       setPassword("");
-      navigate(userData.user.role === "parent" ? "/app/parent" : "/app/doctor");
+      navigate(userData.user.role === "parent" ? "/" : "/app/doctor");
     } catch (err) {
       // Handle the 401/403 errors we set up in the backend
       if (!err?.status) {
