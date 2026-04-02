@@ -6,6 +6,7 @@ import * as authApi from "../../store/features/auth/authApiSlice";
 const VerifyEmail = () => {
   const [searchParams] = useSearchParams();
   const token = searchParams.get("token");
+  console.log("Token from URL:", token)
   const navigate = useNavigate();
 
   // DEBUG: This will now run because we aren't destructuring yet
