@@ -1,4 +1,4 @@
-import Resend from "resend";
+import {Resend} from "resend";
 // import { verificationEmailTemplate } from "./emailTemplate";
 
 // Initialize with your Render Env Var
