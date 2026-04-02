@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useSearchParams, useNavigate } from "react-router";
 // Import the whole slice to see what's inside
 import * as authApi from "../../store/features/auth/authApiSlice";
@@ -6,6 +6,7 @@ import * as authApi from "../../store/features/auth/authApiSlice";
 const VerifyEmail = () => {
   const [searchParams] = useSearchParams();
   const token = searchParams.get("token");
+  const navigate = useNavigate();
 
   // DEBUG: This will now run because we aren't destructuring yet
   console.log("What is in authApiSlice?", authApi);
@@ -18,16 +19,29 @@ const VerifyEmail = () => {
   // If it exists, we can safely use it
   const [verifyEmail, { isLoading, isSuccess, isError }] = authApi.useVerifyEmailMutation();
 
-  useEffect(() => {
-    if (token) {
-      verifyEmail(token);
-    }
-  }, [token, verifyEmail]);
+const hasCalled = useRef(false);
+
+useEffect(() => {
+  if (token && !hasCalled.current) {
+    hasCalled.current = true; // This "locks" the function
+    verifyEmail(token);
+  }
+}, [token, verifyEmail]);
 
   return (
     <div className="p-20 text-center">
       {isLoading && <p>Verifying...</p>}
-      {isSuccess && <p className="text-emerald-500">Verified Successfully!</p>}
+      {isSuccess && 
+      <div>
+      <p className="text-emerald-500">Verified Successfully!</p>
+      <button
+        onClick={() => navigate("/login")}
+        className="mt-4 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"     
+      >
+        Go to Login
+      </button>
+      </div>}
+      
       {isError && <p className="text-red-500">Verification Failed.</p>}
     </div>
   );
