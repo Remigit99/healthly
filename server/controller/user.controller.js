@@ -2,7 +2,7 @@ import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import { generateTokens } from "../utils/generateTokens.js";
 
-import {sendVerificationEmail} from "../utils/sendEmail.js";
+import { sendVerificationEmail } from "../utils/sendEmail.js";
 import { verificationEmailTemplate } from "../utils/emailTemplate.js";
 import crypto from "crypto";
 
@@ -54,23 +54,21 @@ export const registerUser = async (req, res) => {
 
     // SEND THE EMAIL
 
-    sendVerificationEmail(    
-          newUser.email,
-          // subject: "Verify your Healthly Account",
-         verificationEmailTemplate(newUser.firstName, vToken)  
+    sendVerificationEmail(
+      newUser.email,
+      // subject: "Verify your Healthly Account",
+      verificationEmailTemplate(newUser.firstName, vToken),
     )
       .then(() => console.log("Email sent successfully"))
       .catch((err) => console.error("Background Email Error:", err));
 
     // Respond to the frontend IMMEDIATELY
     return (
-
       // res.status(201).json({
       //   message: "User registered. Please check your email.",
       //   user: { id: newUser._id, email: newUser.email },
       // }),
 
-      
       // try {
       //   await sendEmail({
       //     email: newUser.email,
@@ -185,14 +183,25 @@ export const logout = async (req, res) => {
 
 // VERIFY EMAIL CONTROLLER
 export const verifyEmail = async (req, res) => {
-  const { token } = req.query;
+  const token = req.params.token.trim();
 
+  console.log("Cleaned Token:", `|${token}|`);
+
+  //   const { token } = req.query;
+  // console.log("Received verification token:", token);
   const user = await User.findOne({
     verificationToken: token,
     verificationTokenExpires: { $gt: Date.now() },
   });
 
   if (!user) {
+    console.log("No user found with token:", token);
+    // Let's see if we can find ANY user with a token to compare formats
+    const anyUserWithToken = await User.findOne({
+      verificationToken: { $exists: true },
+    });
+    console.log("Format in DB:", anyUserWithToken?.verificationToken);
+
     return res
       .status(400)
       .json({ message: "Invalid or expired verification link." });
