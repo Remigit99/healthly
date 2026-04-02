@@ -54,12 +54,10 @@ export const registerUser = async (req, res) => {
 
     // SEND THE EMAIL
 
-    sendVerificationEmail(
-      {
-          email: newUser.email,
+    sendVerificationEmail(    
+          newUser.email,
           // subject: "Verify your Healthly Account",
-          html: verificationEmailTemplate(newUser.firstName, vToken)
-        }
+         verificationEmailTemplate(newUser.firstName, vToken)  
     )
       .then(() => console.log("Email sent successfully"))
       .catch((err) => console.error("Background Email Error:", err));
