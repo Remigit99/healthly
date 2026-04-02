@@ -4,7 +4,7 @@ import {Resend} from "resend";
 // Initialize with your Render Env Var
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const sendVerificationEmail = async (email,html) => {
+export const sendVerificationEmail = async (email,html) => {
   try {
     const { data, error } = await resend.emails.send({
       from: 'Healthly <onboarding@resend.dev>', // Resend provides this for testing
@@ -31,5 +31,3 @@ const sendVerificationEmail = async (email,html) => {
     return { success: false, err };
   }
 };
-
-module.exports = sendVerificationEmail;

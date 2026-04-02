@@ -2,7 +2,7 @@ import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import { generateTokens } from "../utils/generateTokens.js";
 
-import sendEmail from "../utils/sendEmail.js";
+import {sendVerificationEmail} from "../utils/sendEmail.js";
 import { verificationEmailTemplate } from "../utils/emailTemplate.js";
 import crypto from "crypto";
 
