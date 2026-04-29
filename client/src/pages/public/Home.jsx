@@ -44,7 +44,10 @@ const Home = () => {
               </div>
 
               <div>
-                <Link className="text-amber-700 flex items-center hover:text-amber-500 transition duration-300" to="/">
+                <Link
+                  className="text-amber-700 flex items-center hover:text-amber-500 transition duration-300"
+                  to="/"
+                >
                   <p className="font-semibold">Learn More</p>
                   <FaArrowRight className="inline ml-1" />
                 </Link>
@@ -66,7 +69,10 @@ const Home = () => {
               </div>
 
               <div>
-                <Link className="text-amber-700 flex items-center hover:text-amber-500 transition duration-300" to="/">
+                <Link
+                  className="text-amber-700 flex items-center hover:text-amber-500 transition duration-300"
+                  to="/"
+                >
                   <p className="font-semibold">Learn More</p>
                   <FaArrowRight className="inline ml-1" />
                 </Link>
@@ -87,9 +93,12 @@ const Home = () => {
                 </p>
               </div>
               <div>
-                <Link className="text-amber-700 flex items-center hover:text-amber-500 transition duration-300" to="/">
+                <Link
+                  className="text-amber-700 flex items-center hover:text-amber-500 transition duration-300"
+                  to="/"
+                >
                   <p className="font-semibold">Learn More</p>
-                  <FaArrowRight className="inline ml-1" />
+                  <FaArrowRight className="inline ml-2" />
                 </Link>
               </div>
             </article>
@@ -112,8 +121,9 @@ const Home = () => {
                 Book, reschedule, and manage appointments effortlessly
               </p>
 
-              <button className="bg-amber-700  text-white py-2 px-4 rounded-md hover:bg-amber-800 transition duration-300">
+              <button className="bg-amber-700  cursor-pointer text-white py-2 px-4 rounded-md hover:bg-amber-800 transition duration-300">
                 Book Appointment
+                <FaArrowRight className="inline ml-2" />
               </button>
             </div>
 
@@ -134,8 +144,9 @@ const Home = () => {
                 High-definition, encrypted video calls for secure consultations.
               </p>
 
-              <button className="bg-amber-700  text-white py-2 px-4 rounded-md hover:bg-amber-800 transition duration-300">
+              <button className="bg-amber-700  cursor-pointer text-white py-2 px-4 rounded-md hover:bg-amber-800 transition duration-300">
                 Call Now
+                   <FaArrowRight className="inline ml-2" />
               </button>
             </div>
           </div>
@@ -148,8 +159,9 @@ const Home = () => {
                 Secure access to your child's health records.
               </p>
 
-              <button className="bg-amber-700  text-white py-2 px-4 rounded-md hover:bg-amber-800 transition duration-300">
+              <button className="bg-amber-700  cursor-pointer text-white py-2 px-4 rounded-md hover:bg-amber-800 transition duration-300">
                 Manage Record
+                <FaArrowRight className="inline ml-2" />
               </button>
             </div>
 
@@ -170,8 +182,9 @@ const Home = () => {
                 Convenient prescription handling and renewals
               </p>
 
-              <button className="bg-amber-700  text-white py-2 px-4 rounded-md hover:bg-amber-800">
+              <button className="bg-amber-700  cursor-pointer text-white py-2 px-4 rounded-md hover:bg-amber-800 transition duration-300">
                 Get Care
+                <FaArrowRight className="inline ml-2" />
               </button>
             </div>
           </div>

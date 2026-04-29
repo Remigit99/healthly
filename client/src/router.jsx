@@ -11,6 +11,7 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import VerifyEmail from "./pages/auth/VerifyEmail";
 import GoVerifyEmail from "./pages/auth/GoVerifyEmail";
+import NotFound from "./pages/shared/NotFound";
 // import Dashboard from "./pages/shared/Dashboard"; // We'll make this dynamic
 
 const router = createBrowserRouter([
@@ -57,7 +58,7 @@ const router = createBrowserRouter([
 //     ],
 //   },
 
-  { path: "*", element: <div className="p-20 text-center">404 - Not Found</div> },
+  { path: "*", element: <NotFound /> },
 ]);
 
 export default router;

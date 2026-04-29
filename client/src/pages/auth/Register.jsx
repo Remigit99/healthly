@@ -54,8 +54,8 @@ const Register = () => {
 
 
     return (
-        <div className='grid grid-cols-2 gap-8  '>
-            <div>
+        <div className='flex justify-center items-center md:grid-cols-2 md:gap-8  '>
+            <div className='hidden md:block'> 
                 <img src={RegisterBackground} alt="Register Background" className="w-full h-screen object-cover" />
             </div>
 
