@@ -72,9 +72,10 @@ const Navbar = () => {
           </div>
         ) : (
           /* NOT LOGGED IN: Show Login/Signup */
+          
            <div className="flex gap-4">     
             <button className="px-4 py-2  text-[#FF7F50] rounded-md  font-semibold hover:bg-[#FF6347] transition duration-300   ">
-                <Link className="text-white" to="/login">Login</Link>
+                <Link className="text-gray-700" to="/login">Login</Link>
             </button>
            
             <button className="px-4 py-2  bg-[#FF7F50] rounded-md text-white font-semibold hover:bg-[#FF6347] transition duration-300   ">
