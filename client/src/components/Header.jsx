@@ -26,7 +26,7 @@ const Header = () => {
           </div>
 
           <img
-            className="absolute -top-14 right-24"
+            className="absolute -top-18 right-24"
             src={HeroSvg}
             alt="hero_svg"
           />

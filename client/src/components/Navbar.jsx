@@ -1,5 +1,4 @@
 import { Link } from "react-router"
-// import HealthlyLogo from "/echomed_logo.svg"
 import Logo from "./Logo";
 import { FaUserCircle, FaChevronDown } from "react-icons/fa";
 import { useState } from "react";

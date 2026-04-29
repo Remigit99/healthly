@@ -6,13 +6,12 @@ const Logo = () => {
   return (
     <a href="/" className="block">
       <picture>
-        {/* Desktop: Show logo + text if screen is 768px or wider */}
         <source 
           media="(min-width: 768px)" 
           srcSet={HealthlyLogoMain} 
         />
         
-        {/* Mobile: Default to the ordinary logo icon */}
+        {/* Mobile */}
         <img 
           src={HealthlyLogoIcon} 
           alt="Healthly Logo" 
