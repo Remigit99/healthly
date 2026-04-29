@@ -3,6 +3,7 @@ import RegisterBackground from '/signup_img.png'
 import { Link, useNavigate } from "react-router";
 import { useState } from "react";
 import { useRegisterMutation } from "../../store/features/auth/authApiSlice";
+import Spinner from '../../components/Spinner';
 
 
 const Register = () => {
@@ -54,7 +55,7 @@ const Register = () => {
 
 
     return (
-        <div className='flex justify-center items-center md:grid-cols-2 md:gap-8  '>
+        <div className='grid  md:grid-cols-2 md:gap-8 w-full  '>
             <div className='hidden md:block'> 
                 <img src={RegisterBackground} alt="Register Background" className="w-full h-screen object-cover" />
             </div>
@@ -87,7 +88,7 @@ const Register = () => {
                         <button 
                         disabled={isLoading}
                         type='submit' className='my-6 cursor-pointer w-48 font-bold bg-orange5 text-white rounded px-4 py-2 hover:bg-orange3'>
-                           {isLoading ? "Registering..." : "Register"}
+                           {isLoading ? <Spinner /> : "Register"}
                             </button>
                     </form>
 

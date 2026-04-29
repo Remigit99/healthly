@@ -43,7 +43,7 @@ const Home = () => {
                 </p>
               </div>
 
-              <div>
+              <div className="flex">
                 <Link
                   className="text-amber-700 flex items-center hover:text-amber-500 transition duration-300"
                   to="/"
@@ -51,6 +51,7 @@ const Home = () => {
                   <p className="font-semibold">Learn More</p>
                   <FaArrowRight className="inline ml-1" />
                 </Link>
+                <div></div>
               </div>
             </article>
 

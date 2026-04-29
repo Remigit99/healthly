@@ -6,11 +6,13 @@ import {
   setCredentials,
   selectCurrentUser,
 } from "../../store/features/auth/authSlice";
+import Spinner from "../../components/Spinner";
+import { toast } from "sonner";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errMsg, setErrMsg] = useState("");
+  // const [errMsg, setErrMsg] = useState("");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -42,11 +44,15 @@ const Login = () => {
     } catch (err) {
       // Handle the 401/403 errors we set up in the backend
       if (!err?.status) {
-        setErrMsg("No Server Response");
+        // setErrMsg("No Server Response");
+        toast.error("No Server Response");
       } else if (err.status === 403) {
-        setErrMsg("Account not verified. Please check your email.");
+        // setErrMsg("Account not verified. Please check your email.");
+        toast.error("Account not verified. Please check your email.");
       } else {
-        setErrMsg("Invalid Email or Password");
+        // setErrMsg("Invalid Email or Password");
+        toast.error("Invalid Email or Password");
+
       }
     }
   };
@@ -72,9 +78,9 @@ const Login = () => {
                 autoFocus
                 className="px-1 focus:border-green1 placeholder:text-accent placeholder:text-gray1 rounded  py-2 w-full outline-0 border border-gray1"
               />
-              {errMsg && (
+              {/* {errMsg && (
                 <p className="text-red-500 text-p-small mt-1">{errMsg}</p>
-              )}
+              )} */}
             </div>
 
             <div>
@@ -91,10 +97,11 @@ const Login = () => {
 
             <div className="flex justify-center items-center">
               <button
+              disabled={isLoading}
                 type="submit"
                 className="my-6  cursor-pointer w-48 font-bold bg-orange5 text-white rounded px-4 py-2 hover:bg-orange3"
               >
-                {isLoading ? "Logging in..." : "Login"}
+                {isLoading ? <Spinner /> : "Login"}
               </button>
             </div>
           </form>
