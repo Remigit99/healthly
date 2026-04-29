@@ -2,6 +2,7 @@ import LOGO from '/echomed_logo.svg';
 import { CiFacebook } from "react-icons/ci";
 import { FaXTwitter } from "react-icons/fa6";
 import { CiInstagram } from "react-icons/ci";
+import HealthlyLogo from "/healthly_main_logo.png";
 
 const Footer = () => {
   return (
@@ -10,8 +11,9 @@ const Footer = () => {
 
         <div className='mb-12 flex md:flex-row flex-col items-start justify-between gap-8'>
             <div> 
-                <img src={LOGO} alt="Healthly Logo" />
-                <p className='text-sm'>Nuturing Healthy Future</p>
+                <div className='mb-4'>
+                <img src={HealthlyLogo} alt="Healthly_Logo" className="w-40 h-10 " />
+                </div>
                 <div className='flex items-center gap-0.5'>
                     <a href="#" className="text-gray-600 hover:text-gray-800 mx-2">
                         <CiFacebook size={24} />

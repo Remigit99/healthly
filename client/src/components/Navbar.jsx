@@ -1,5 +1,6 @@
 import { Link } from "react-router"
-import HealthlyLogo from "/echomed_logo.svg"
+// import HealthlyLogo from "/echomed_logo.svg"
+import Logo from "./Logo";
 import { FaUserCircle, FaChevronDown } from "react-icons/fa";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -19,9 +20,7 @@ const Navbar = () => {
     <nav className="sticky z-100 top-0 left-0 right-0 h-16 w-full bg-amber-200 flex justify-between items-center">
         <div className="container mx-auto flex justify-between items-center px-4">
         {/* Logo */}
-        <Link to="/">
-            <img src={HealthlyLogo} alt="Healthly_Logo" />
-        </Link>
+        <Logo />
 
         {/* MENU LINKS */}
         <div className=" hidden md:flex md:gap-8 ">
