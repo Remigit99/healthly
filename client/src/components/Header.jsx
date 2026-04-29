@@ -1,6 +1,7 @@
 import HeroImg from "/hero_main_img.png";
 import HeroSvg from "/doll2.png";
 import Navbar from "./Navbar";
+import FormkitArrow from "/formkit_arrowright.png";
 
 const Header = () => {
   return (
@@ -18,8 +19,9 @@ const Header = () => {
           </p>
 
           <div>
-            <button className="px-4 py-2  bg-[#FF7F50] rounded-md text-white font-semibold hover:bg-[#FF6347] transition duration-300   ">
+            <button className="px-4 py-2 cursor-pointer flex items-center  bg-[#FF7F50] rounded-md text-white font-semibold hover:bg-[#FF6347] transition duration-300   ">
               <p>Book a Pediatrician</p>
+              <img className="inline ml-2" src={FormkitArrow} alt="formkit_arrow" />
             </button>
           </div>
 

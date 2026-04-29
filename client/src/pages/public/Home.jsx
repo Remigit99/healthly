@@ -9,9 +9,11 @@ import Record from "/record.png";
 import Prescribe from "/prescribe.png";
 import DrEmily from "/dr_emily.png";
 import DrMike from "/dr_mike.png";
-import Subscribe from "/subscribe.png"
+import Subscribe from "/subscribe.png";
 import Faqs from "../../components/Faqs";
 import Footer from "../../components/Footer";
+
+import { FaArrowRight } from "react-icons/fa";
 
 const Home = () => {
   return (
@@ -26,52 +28,70 @@ const Home = () => {
           </h1>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <article className="border p-6 rounded-md shadow-md">
-              <img src={PedCon} alt="icon" />
-              <h3 className="font-semibold my-3">Pediatric Consultation</h3>
+            <article className="border p-6 rounded-md shadow-md flex flex-col justify-between">
+              <div>
+                <div>
+                  <img src={PedCon} alt="icon" />
+                  <h3 className="font-semibold my-3">Pediatric Consultation</h3>
+                </div>
 
-              <p className="font-accent mb-8 text-gray2">
-                Our certified pediatric specialists are ready to listen, guide,
-                and provide expert medical advice for your little one making
-                quality child care simple, safe, and accessible from the comfort
-                of your home.
-              </p>
+                <p className="font-accent mb-8 text-gray2">
+                  Our certified pediatric specialists are ready to listen,
+                  guide, and provide expert medical advice for your little one
+                  making quality child care simple, safe, and accessible from
+                  the comfort of your home.
+                </p>
+              </div>
 
-              <Link className="text-amber-700" to="/">
-                {" "}
-                Learn More{" "}
-              </Link>
+              <div>
+                <Link className="text-amber-700 flex items-center hover:text-amber-500 transition duration-300" to="/">
+                  <p className="font-semibold">Learn More</p>
+                  <FaArrowRight className="inline ml-1" />
+                </Link>
+              </div>
             </article>
 
-            <article className="border p-6 rounded-md shadow-md">
-              <img src={MedDev} alt="icon" />
-              <h3 className="font-semibold my-3">Medication Delivery</h3>
+            <article className="border p-6 rounded-md shadow-md flex flex-col justify-between">
+              <div>
+                <div>
+                  <img src={MedDev} alt="icon" />
+                  <h3 className="font-semibold my-3">Medication Delivery</h3>
+                </div>
 
-              <p className="font-accent mb-8 text-gray2">
-                Skip the long queues and uncertainty. We partner with verified
-                pharmacies to ensure your prescriptions are delivered fast,
-                safe, and genuine. Your child’s health deserves only the best.
-              </p>
+                <p className="font-accent mb-8 text-gray2">
+                  Skip the long queues and uncertainty. We partner with verified
+                  pharmacies to ensure your prescriptions are delivered fast,
+                  safe, and genuine. Your child’s health deserves only the best.
+                </p>
+              </div>
 
-              <Link className="text-amber-700" to="/">
-                {" "}
-                Learn More{" "}
-              </Link>
+              <div>
+                <Link className="text-amber-700 flex items-center hover:text-amber-500 transition duration-300" to="/">
+                  <p className="font-semibold">Learn More</p>
+                  <FaArrowRight className="inline ml-1" />
+                </Link>
+              </div>
             </article>
 
-            <article className="border p-6 rounded-md shadow-md">
-              <img src={MedServe} alt="icon" />
-              <h3 className="font-semibold my-3">Pediatric Consultation</h3>
+            <article className="border p-6 rounded-md shadow-md flex flex-col justify-between">
+              <div>
+                <div>
+                  <img src={MedServe} alt="icon" />
+                  <h3 className="font-semibold my-3">Pediatric Consultation</h3>
+                </div>
 
-              <p className="font-accent mb-8 text-gray2">
-                Whether it’s follow-up visits, vaccination reminders, or at-home
-                checkups, our trusted healthcare professionals bring expert care
-                right to your doorstep.
-              </p>
-              <Link className="text-amber-700" to="/">
-                {" "}
-                Learn More{" "}
-              </Link>
+                <p className="font-accent mb-8 text-gray2">
+                  Whether it’s follow-up visits, vaccination reminders, or
+                  at-home checkups, our trusted healthcare professionals bring
+                  expert care right to your doorstep.
+                </p>
+              </div>
+              <div>
+                <Link className="text-amber-700 flex items-center hover:text-amber-500 transition duration-300" to="/">
+                  <p className="font-semibold">Learn More</p>
+                  <FaArrowRight className="inline ml-1" />
+                </Link>
+              </div>
             </article>
           </div>
         </div>
@@ -92,7 +112,7 @@ const Home = () => {
                 Book, reschedule, and manage appointments effortlessly
               </p>
 
-              <button className="bg-amber-700  text-white py-2 px-4 rounded-md hover:bg-amber-800">
+              <button className="bg-amber-700  text-white py-2 px-4 rounded-md hover:bg-amber-800 transition duration-300">
                 Book Appointment
               </button>
             </div>
@@ -114,7 +134,7 @@ const Home = () => {
                 High-definition, encrypted video calls for secure consultations.
               </p>
 
-              <button className="bg-amber-700  text-white py-2 px-4 rounded-md hover:bg-amber-800">
+              <button className="bg-amber-700  text-white py-2 px-4 rounded-md hover:bg-amber-800 transition duration-300">
                 Call Now
               </button>
             </div>
@@ -128,7 +148,7 @@ const Home = () => {
                 Secure access to your child's health records.
               </p>
 
-              <button className="bg-amber-700  text-white py-2 px-4 rounded-md hover:bg-amber-800">
+              <button className="bg-amber-700  text-white py-2 px-4 rounded-md hover:bg-amber-800 transition duration-300">
                 Manage Record
               </button>
             </div>
@@ -229,8 +249,13 @@ const Home = () => {
       <section className="bg-green-950 text-white py-12">
         <div className="container mx-auto px-8 md:px-24 py-16 md:flex md:justify-between md:items-center">
           <div>
-            <h3 className="text-h5 md:text-h4 font-bold ">Because Every Parent </h3>
-            <h3 className="text-h5 md:text-h4 font-bold "> Deserves to Know More.</h3>
+            <h3 className="text-h5 md:text-h4 font-bold ">
+              Because Every Parent{" "}
+            </h3>
+            <h3 className="text-h5 md:text-h4 font-bold ">
+              {" "}
+              Deserves to Know More.
+            </h3>
             <p className="text-p-small w-full md:w-3/4 mt-6 mb-8">
               Get expert health tips, parenting insights, and updates from our
               medical team
@@ -238,23 +263,32 @@ const Home = () => {
 
             <div className="mt-4">
               <form className="flex gap-4 flex-col  md:flex-row">
-                <input type="email" placeholder="Enter Your Email Address" className="bg-white w-max rounded-md px-4 py-2 outline-0 placeholder:text-gray2 placeholder:font-accent"/>
-              <Link className="bg-light-green rounded-md w-32 md:w-36 px-2 md:px-4 py-2" to="/">Get Updated</Link>
+                <input
+                  type="email"
+                  placeholder="Enter Your Email Address"
+                  className="bg-white w-max rounded-md px-4 py-2 outline-0 placeholder:text-gray2 placeholder:font-accent"
+                />
+                <Link
+                  className="bg-light-green rounded-md w-32 md:w-36 px-2 md:px-4 py-2"
+                  to="/"
+                >
+                  Get Updated
+                </Link>
               </form>
             </div>
           </div>
 
           <div className="hidden md:block">
-          <img src={Subscribe} alt="newsletter" />
+            <img src={Subscribe} alt="newsletter" />
           </div>
         </div>
       </section>
 
       {/* FAQs */}
-     <Faqs/>
+      <Faqs />
 
-     {/* FOOTER */}
-     <Footer/>
+      {/* FOOTER */}
+      <Footer />
     </>
   );
 };
