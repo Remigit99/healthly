@@ -21,6 +21,23 @@ const Login = () => {
   // RTK Query hook gives us the trigger function and the loading state
   const [login, { isLoading }] = useLoginMutation();
 
+  const [errors, setErrors] = useState({});
+
+  const validate = (name, value) => {
+    let error = "";
+    
+    // Quick rules for each field
+    if (name === "email") {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) error = "Invalid email";
+    }
+
+    if (name === "password") {
+      if (value.length < 8) error = "Min 8 characters";
+    }
+
+    setErrors(prev => ({ ...prev, [name]: error }));
+  };
+
   // Redirect if already logged in
   useEffect(() => {
     if (user) {

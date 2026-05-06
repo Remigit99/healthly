@@ -14,6 +14,7 @@ const Register = () => {
   });
 
   const [errMsg, setErrMsg] = useState("");
+  const [errors, setErrors] = useState({});
 
   const navigate = useNavigate();
 
@@ -26,6 +27,30 @@ const Register = () => {
     setUserInfo((prev) => ({ ...prev, [name]: value }));
     if (errMsg) setErrMsg(""); // Clear errors when user types
   };
+
+
+
+  const validate = (name, value) => {
+    let error = "";
+    
+    // Quick rules for each field
+    if (name === "firstname" || name === "lastname") {
+      if (value.trim().length < 2) error = "Too short";
+    }
+    
+    if (name === "email") {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) error = "Invalid email";
+    }
+
+    if (name === "password") {
+      if (value.length < 8) error = "Min 8 characters";
+    }
+
+    setErrors(prev => ({ ...prev, [name]: error }));
+  };
+
+
+
 
   // 3. Submission Logic
   const handleSubmitForm = async (e) => {
