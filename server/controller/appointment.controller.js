@@ -40,3 +40,19 @@ export const createAppointment = async (req, res) => {
     });;
   }
 };
+
+
+// getAppointmentController.js
+export const getMyAppointments = async (req, res) => {
+  try {
+    // Find all appointments where the parent is the logged-in user
+    // We use .populate('child') to get the kid's name instead of just an ID
+    const appointments = await Appointment.find({ parent: req.user._id })
+      .populate('child', 'name age') 
+      .sort({ appointmentDate: -1 }); // Show newest first
+
+    res.status(200).json(appointments);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching appointments" });
+  }
+};

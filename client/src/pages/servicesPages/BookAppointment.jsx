@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+// import { useNavigate } from "react-router";
 import { useGetChildrenQuery } from "../../store/features/children/ChildrenApiSlice";
 
   // Local UI State
@@ -11,6 +12,7 @@ import {
   Loader2
 } from "lucide-react";
 import { useBookAppointmentMutation } from "../../store/features/services/servicesApiSlice";
+import AppointmentSuccess from "../../components/services/AppointmentSuccess";
 
 const formattedDate = new Intl.DateTimeFormat("en-GB", {
   weekday: "long",
@@ -19,6 +21,7 @@ const formattedDate = new Intl.DateTimeFormat("en-GB", {
 }).format(new Date()); // This defaults to "Today"
 
 const BookAppointment = () => {
+  // const navigate = useNavigate();
   const { data, isLoading } = useGetChildrenQuery();
 const [bookAppointment, { isLoading: isBooking }] = useBookAppointmentMutation();
 
@@ -30,6 +33,8 @@ const [bookAppointment, { isLoading: isBooking }] = useBookAppointmentMutation()
     type: "Physical", // Default value
     time: "",
   });
+
+  const [bookedDetails, setBookedDetails] = useState(null);
 
   const handleFinalConfirm = async () => {
 
@@ -53,8 +58,15 @@ const [bookAppointment, { isLoading: isBooking }] = useBookAppointmentMutation()
 
       await bookAppointment(payload).unwrap();
 
+      // Store data for the success screen
+    setBookedDetails({
+      childName: selectedChild.name,
+      time: bookingDetails.time
+    });
+
       // Redirect or Success View
       setStep(4);
+       // Redirect to appointments page after booking
     } catch (err) {
       // Error handling logic
       console.error("Booking failed:", err);
@@ -146,6 +158,13 @@ const [bookAppointment, { isLoading: isBooking }] = useBookAppointmentMutation()
           num={3}
           label="Confirm"
           active={step === 3}
+          completed={step > 3}
+        />
+        <ChevronRight size={16} className="text-slate-300" />
+<StepIndicator
+          num={4}
+          label="Success"
+          active={step === 4}
           completed={false}
         />
       </div>
@@ -416,6 +435,9 @@ const [bookAppointment, { isLoading: isBooking }] = useBookAppointmentMutation()
           </div>
         </div>
       )}
+
+{step === 4 && <AppointmentSuccess appointmentData={bookedDetails} />}
+
     </div>
   );
 };

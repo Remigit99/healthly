@@ -2,8 +2,8 @@ import { createBrowserRouter, Navigate } from "react-router";
 import RoleGuard from "./components/auth/RoleGuard";
 
 // LAYOUTS (The "Shells")
-import PublicLayout from "./layouts/PublicLayout";   // For non-authenticated users
-import AppLayout from "./layouts/AppLayout";         // Sidebar for logged-in users
+import PublicLayout from "./layouts/PublicLayout"; // For non-authenticated users
+import AppLayout from "./layouts/AppLayout"; // Sidebar for logged-in users
 
 // PAGES
 import Home from "./pages/public/Home";
@@ -14,18 +14,20 @@ import GoVerifyEmail from "./pages/auth/GoVerifyEmail";
 import NotFound from "./pages/shared/NotFound";
 import BookAppointment from "./pages/servicesPages/BookAppointment";
 import GlobalErrorFallback from "./components/GlobalErrorFallback";
+import { Dashboard } from "./pages/servicesPages/Dashboard";
+import MyAppointments from "./pages/servicesPages/MyAppointments";
 // import Dashboard from "./pages/shared/Dashboard"; // We'll make this dynamic
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <PublicLayout />, 
+    element: <PublicLayout />,
     errorElement: <GlobalErrorFallback />,
     children: [
       { index: true, element: <Home /> },
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
-      {path: "go-verify-email", element: <GoVerifyEmail /> },
+      { path: "go-verify-email", element: <GoVerifyEmail /> },
       { path: "verify-email", element: <VerifyEmail /> },
     ],
   },
@@ -42,7 +44,17 @@ const router = createBrowserRouter([
           {
             path: "parent",
             element: <RoleGuard allowedRoles={["parent"]} />,
-            children: [{ path: "book-appointment", element: <BookAppointment role="parent" /> }],
+            children: [
+              { index: true, element: <Dashboard role="parent" /> },
+              {
+                path: "dashboard/my-appointments",
+                element: <MyAppointments role="parent" />,
+              },
+              {
+                path: "book-appointment",
+                element: <BookAppointment role="parent" />,
+              },
+            ],
           },
           // {
           //   path: "parent",

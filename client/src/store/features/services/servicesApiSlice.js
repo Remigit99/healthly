@@ -1,4 +1,3 @@
-
 import { apiSlice } from "../../api/apiSlice";
 
 export const servicesApiSlice = apiSlice.injectEndpoints({
@@ -8,10 +7,20 @@ export const servicesApiSlice = apiSlice.injectEndpoints({
       providesTags: ["Child"],
     }),
     bookAppointment: builder.mutation({
-      query: (data) => ({ url: "/api/appointments", method: "POST", body: data }),
+      query: (data) => ({
+        url: "/api/appointments",
+        method: "POST",
+        body: data,
+      }),
       invalidatesTags: ["Appointment"],
+    }),
+
+    getMyAppointments: builder.query({
+      query: () => "/api/appointments/my-appointments",
+      providesTags: ["Appointment"],
     }),
   }),
 });
 
-export const { useGetChildrenQuery, useBookAppointmentMutation } = servicesApiSlice;
+export const { useGetChildrenQuery, useBookAppointmentMutation } =
+  servicesApiSlice;
