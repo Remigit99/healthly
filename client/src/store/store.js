@@ -2,12 +2,24 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { apiSlice } from './api/apiSlice';
 import authReducer from './features/auth/authSlice';
 import {persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER} from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web  
   
+
+const customStorage = {
+  getItem: (key) => {
+    return Promise.resolve(localStorage.getItem(key));
+  },
+  setItem: (key, value) => {
+    return Promise.resolve(localStorage.setItem(key, value));
+  },
+  removeItem: (key) => {
+    return Promise.resolve(localStorage.removeItem(key));
+  },
+};
+
 const persistConfig = {
   key: 'root',
   version: 1,
-  storage,
+  storage: customStorage,
   whitelist: ['auth'], // Only persist the auth slice
 };
 
