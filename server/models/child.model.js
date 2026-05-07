@@ -21,12 +21,12 @@ const childSchema = new mongoose.Schema(
     },
     genotype: {
       type: String,
-      enum: ["AA", "AS", "SS", "AC", "SC"],
+      enum: ["AA", "AS", "SS", "AC", "SC" ,""],
       default: "AA",
     },
     bloodGroup: {
       type: String,
-      enum: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"],
+      enum: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-", ""],
     },
     allergies: {
       type: [String],
