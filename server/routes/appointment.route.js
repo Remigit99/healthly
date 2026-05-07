@@ -1,15 +1,11 @@
-import express from 'express';
-import { protect, authorize } from '../middleware/auth.middleware.js';
-const router = express.Router();
+import {Router} from 'express';
+import { createAppointment } from '../controller/appointment.controller.js';
+import {protect} from '../middleware/auth.middleware.js';
 
-// Only Doctors can view their clinical queue
-router.get('/doctor-queue', protect, authorize('doctor'), (req, res) => {
-  res.json({ message: "Welcome to the clinical dashboard, Doctor." });
-});
+export const appointmentRouter = Router();
 
-// Parents and Doctors can view medical records, but Admins can too
-router.get('/records', protect, authorize('parent', 'doctor', 'admin'), (req, res) => {
-  res.json({ message: "Accessing medical records..." });
-});
+appointmentRouter.use(protect); // All appointment routes need a token
 
-export default router;
+appointmentRouter.post('/', createAppointment);
+// appointmentRouter.get('/my-appointments', getMyAppointments);
+

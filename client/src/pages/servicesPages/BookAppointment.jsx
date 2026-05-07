@@ -1,13 +1,53 @@
 import { useState, useEffect } from "react";
 import { useGetChildrenQuery } from "../../store/features/children/ChildrenApiSlice";
+
+  // Local UI State
 import AddChildForm from "../../components/services/AddChildForm";
-import {Calendar, UserPlus, ChevronRight, CheckCircle, ArrowLeft } from "lucide-react";
+import {
+  UserPlus,
+  ChevronRight,
+  CheckCircle,
+  ArrowLeft,
+  Loader2
+} from "lucide-react";
+import { useBookAppointmentMutation } from "../../store/features/services/servicesApiSlice";
+
+const formattedDate = new Intl.DateTimeFormat("en-GB", {
+  weekday: "long",
+  month: "long",
+  day: "numeric",
+}).format(new Date()); // This defaults to "Today"
 
 const BookAppointment = () => {
   const { data, isLoading } = useGetChildrenQuery();
+const [bookAppointment, { isLoading: isBooking }] = useBookAppointmentMutation();
+
   const [selectedChild, setSelectedChild] = useState(null);
   const [step, setStep] = useState(1); // 1: Select Child, 2: Select Slot, 3: Confirm
   const [isAddingNew, setIsAddingNew] = useState(false); // Toggle for "Add Another"
+  const [bookingDetails, setBookingDetails] = useState({
+    reason: "",
+    type: "Physical", // Default value
+    time: "",
+  });
+
+  const handleFinalConfirm = async () => {
+    try {
+      await bookAppointment({
+        child: selectedChild._id,
+        appointmentDate: new Date(), // Logic here to handle specific date + time
+        reason: bookingDetails.reason,
+        type: bookingDetails.type,
+        time: bookingDetails.time,
+      }).unwrap();
+
+      // Redirect or Success View
+      setStep(4);
+    } catch (err) {
+      // Error handling logic
+      console.error("Booking failed:", err);
+    }
+  };
 
   const children = data?.data || [];
 
@@ -158,28 +198,90 @@ const BookAppointment = () => {
 
       {/* Step 2: Calendar Slot Selection */}
       {step === 2 && (
-        <div className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-xl shadow-slate-100/50 animate-in zoom-in-95 duration-300">
-          <h2 className="text-xl font-bold text-slate-800 mb-2">
-            Available Slots for {selectedChild.firstName}
-          </h2>
-          <p className="text-slate-500 mb-6 text-sm">
-            Select a convenient time for the pediatric consultation.
-          </p>
-
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {["9:00 AM", "10:30 AM", "1:00 PM", "2:30 PM"].map((time) => (
-              <button
-                key={time}
-                onClick={() => setStep(3)}
-                className="py-4 px-4 border-2 border-slate-100 rounded-2xl font-bold text-slate-700 hover:border-emerald-500 hover:bg-emerald-500 hover:text-white hover:shadow-lg hover:shadow-emerald-200 transition-all"
-              >
-                {time}
-              </button>
-            ))}
+        <div className="bg-white p-8 rounded-4xl border border-slate-100 shadow-xl shadow-slate-100/50 animate-in zoom-in-95 duration-300 space-y-8">
+          <div>
+            <h2 className="text-xl font-bold text-slate-800 mb-1">
+              Appointment Details
+            </h2>
+            <p className="text-slate-500 text-sm">
+              Tell us more about the visit for {selectedChild.firstName}.
+            </p>
           </div>
+
+          {/* Section 1: Reason for Visit */}
+          <div className="space-y-3">
+            <label className="text-sm font-bold text-slate-700 ml-1">
+              Reason for Consultation
+            </label>
+            <textarea
+              required
+              placeholder="e.g., Fever and cough for 2 days, or routine immunization"
+              className="w-full px-4 py-3 rounded-2xl bg-slate-50 border border-slate-100 focus:border-emerald-500 focus:bg-white outline-none transition-all resize-none h-24"
+              value={bookingDetails.reason}
+              onChange={(e) =>
+                setBookingDetails({ ...bookingDetails, reason: e.target.value })
+              }
+            />
+          </div>
+
+          {/* Section 2: Consultation Type */}
+          <div className="space-y-3">
+            <label className="text-sm font-bold text-slate-700 ml-1">
+              How would you like to see the doctor?
+            </label>
+            <div className="grid grid-cols-2 gap-4">
+              {["Physical", "Virtual"].map((t) => (
+                <button
+                  key={t}
+                  onClick={() =>
+                    setBookingDetails({ ...bookingDetails, type: t })
+                  }
+                  className={`py-4 rounded-2xl font-bold border-2 transition-all ${
+                    bookingDetails.type === t
+                      ? "border-emerald-500 bg-emerald-50 text-emerald-700 shadow-md shadow-emerald-100"
+                      : "border-slate-100 text-slate-500 hover:border-emerald-200"
+                  }`}
+                >
+                  {t === "Physical" ? "🏥 Hospital Visit" : "💻 Online Video"}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Section 3: Time Slots */}
+          <div className="space-y-3">
+            <label className="text-sm font-bold text-slate-700 ml-1">
+              Select a Time Slot
+            </label>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {["9:00 AM", "10:30 AM", "1:00 PM", "2:30 PM"].map((time) => (
+                <button
+                  key={time}
+                  disabled={!bookingDetails.reason} // Disable until reason is typed
+                  onClick={() => {
+                    setBookingDetails({ ...bookingDetails, time });
+                    setStep(3);
+                  }}
+                  className={`py-4 px-4 border-2 rounded-2xl font-bold transition-all ${
+                    !bookingDetails.reason
+                      ? "opacity-40 cursor-not-allowed bg-slate-50 border-slate-100"
+                      : "border-slate-100 text-slate-700 hover:border-emerald-500 hover:bg-emerald-500 hover:text-white hover:shadow-lg"
+                  }`}
+                >
+                  {time}
+                </button>
+              ))}
+            </div>
+            {!bookingDetails.reason && (
+              <p className="text-[10px] text-amber-600 font-medium ml-1 italic">
+                * Please provide a reason to unlock time slots
+              </p>
+            )}
+          </div>
+
           <button
             onClick={() => setStep(1)}
-            className="mt-8 text-slate-400 text-sm font-semibold hover:text-emerald-600 flex items-center transition-colors"
+            className="mt-4 text-slate-400 text-sm font-semibold hover:text-emerald-600 flex items-center transition-colors"
           >
             <ArrowLeft size={14} className="mr-2" /> Change Child
           </button>
@@ -189,98 +291,117 @@ const BookAppointment = () => {
       {/* Step 3: Confirmation View */}
       {step === 3 && (
         <div className="max-w-xl mx-auto animate-in zoom-in-95 duration-300">
-          <div className="bg-white rounded-[2.5rem] border border-slate-100 shadow-2xl shadow-emerald-100/50 overflow-hidden">
-            {/* Header Summary */}
-            <div className="bg-emerald-600 p-8 text-white text-center">
-              <div className="h-20 w-20 bg-white/20 backdrop-blur-md rounded-3xl mx-auto mb-4 flex items-center justify-center">
-                <Calendar size={40} />
+          <div className="bg-white rounded-[2.5rem] border border-slate-100 shadow-2xl shadow-emerald-100/40 overflow-hidden">
+            {/* Header Area */}
+            <div className="bg-emerald-600 p-8 text-white text-center relative">
+              <div className="absolute top-4 right-6 opacity-20">
+                <CheckCircle size={80} />
               </div>
-              <h2 className="text-2xl font-bold">Confirm Appointment</h2>
-              <p className="text-emerald-100 opacity-90">
-                Almost done! Review the details below.
+              <h2 className="text-2xl font-bold mb-1">Confirm Booking</h2>
+              <p className="text-emerald-100 text-sm opacity-90">
+                Review details for {selectedChild.firstName}'s visit
               </p>
             </div>
 
             <div className="p-8 space-y-6">
-              {/* Child Summary */}
-              <div className="flex items-center justify-between p-4 bg-slate-50 rounded-2xl">
+              {/* 1. Patient & Type Summary */}
+              <div className="flex items-center justify-between">
                 <div className="flex items-center">
-                  <div className="h-10 w-10 bg-emerald-100 text-emerald-700 rounded-lg flex items-center justify-center font-bold mr-3">
+                  <div className="h-12 w-12 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center font-bold text-lg mr-4">
                     {selectedChild.firstName[0]}
                   </div>
                   <div>
-                    <p className="text-xs text-slate-400 font-bold uppercase tracking-wider">
-                      Patient
+                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-tighter">
+                      Patient Profile
                     </p>
-                    <p className="font-bold text-slate-800">
+                    <h3 className="font-bold text-slate-800">
                       {selectedChild.firstName} {selectedChild.lastName}
-                    </p>
+                    </h3>
                   </div>
                 </div>
-                <button
-                  onClick={() => setStep(1)}
-                  className="text-emerald-600 text-xs font-bold hover:underline"
+                <div
+                  className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide ${
+                    bookingDetails.type === "Physical"
+                      ? "bg-blue-100 text-blue-700"
+                      : "bg-purple-100 text-purple-700"
+                  }`}
                 >
-                  Edit
-                </button>
-              </div>
-
-              {/* Appointment Details */}
-              <div className="space-y-4">
-                <div className="flex items-start space-x-4">
-                  <div className="mt-1 p-2 bg-blue-50 text-blue-600 rounded-lg">
-                    <Calendar size={18} />
-                  </div>
-                  <div>
-                    <p className="text-xs text-slate-400 font-bold uppercase tracking-wider">
-                      Date & Time
-                    </p>
-                    <p className="font-semibold text-slate-800">
-                      Thursday, May 14, 2026
-                    </p>
-                    <p className="text-slate-500 text-sm">at 10:30 AM (WAT)</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="mt-1 p-2 bg-purple-50 text-purple-600 rounded-lg">
-                    <CheckCircle size={18} />
-                  </div>
-                  <div>
-                    <p className="text-xs text-slate-400 font-bold uppercase tracking-wider">
-                      Service
-                    </p>
-                    <p className="font-semibold text-slate-800">
-                      General Pediatric Consultation
-                    </p>
-                  </div>
+                  {bookingDetails.type} Visit
                 </div>
               </div>
 
-              <hr className="border-slate-100" />
+              <hr className="border-slate-50" />
 
-              {/* Final Action */}
-              <div className="pt-2">
+              {/* 2. Detail Grid */}
+              <div className="grid grid-cols-2 gap-6">
+                <div>
+                  <p className="text-[10px] text-slate-400 font-bold uppercase mb-1">
+                    Date & Time
+                  </p>
+                  {/* No more hardcoded May 14! */}
+                  <p className="text-sm font-bold text-slate-700">
+                    {formattedDate}
+                  </p>
+                  <p className="text-xs text-emerald-600 font-medium whitespace-nowrap">
+                    at {bookingDetails.time} (WAT)
+                  </p>
+                </div>
+                <div className="text-right">
+                  <p className="text-[10px] text-slate-400 font-bold uppercase mb-1">
+                    Consultation
+                  </p>
+                  <p className="text-sm font-bold text-slate-700">
+                    Pediatric Care
+                  </p>
+                  <p className="text-xs text-slate-500">Healthly Services</p>
+                </div>
+              </div>
+
+              {/* 3. Reason Summary (The New Addition) */}
+              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                <p className="text-[10px] text-slate-400 font-bold uppercase mb-2">
+                  Reason for Visit
+                </p>
+                <p className="text-sm text-slate-700 leading-relaxed italic">
+                  "{bookingDetails.reason || "No specific reason provided"}"
+                </p>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="pt-4 space-y-3">
                 <button
-                  onClick={() => alert("Booking Confirmed!")} // We will replace this with a mutation later
-                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-2xl shadow-lg shadow-emerald-200 transition-all active:scale-95 flex items-center justify-center"
+                  disabled={isBooking}
+                  onClick={handleFinalConfirm}
+                  className="w-full bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 text-white font-bold py-4 rounded-2xl shadow-lg shadow-emerald-200 transition-all flex items-center justify-center space-x-2 active:scale-95"
                 >
-                  Confirm & Schedule Appointment
+                  {isBooking ? (
+                    <span className="flex items-center">
+                      <Loader2 className="animate-spin mr-2" /> Processing...
+                    </span>
+                  ) : (
+                    <span>Confirm & Book Appointment</span>
+                  )}
                 </button>
+
                 <button
                   onClick={() => setStep(2)}
-                  className="w-full mt-3 text-slate-400 text-sm font-semibold hover:text-slate-600 transition-colors"
+                  className="w-full text-slate-400 text-sm font-semibold hover:text-slate-600 transition-colors flex items-center justify-center"
                 >
-                  Cancel and go back
+                  <ArrowLeft size={14} className="mr-2" /> Back to details
                 </button>
               </div>
             </div>
           </div>
 
-          <p className="text-center text-slate-400 text-xs mt-6 px-10">
-            By confirming, you agree to Healthly's terms of service. A
-            confirmation SMS will be sent to your registered Nigerian number.
-          </p>
+          <div className="mt-6 flex items-start space-x-3 px-4">
+            <div className="mt-1 text-emerald-500">
+              <CheckCircle size={14} />
+            </div>
+            <p className="text-[10px] text-slate-400 leading-normal">
+              By confirming, you authorize Healthly to share this medical reason
+              with the attending physician. A reminder will be sent via SMS.
+            </p>
+          </div>
         </div>
       )}
     </div>

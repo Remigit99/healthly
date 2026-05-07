@@ -13,12 +13,14 @@ import VerifyEmail from "./pages/auth/VerifyEmail";
 import GoVerifyEmail from "./pages/auth/GoVerifyEmail";
 import NotFound from "./pages/shared/NotFound";
 import BookAppointment from "./pages/servicesPages/BookAppointment";
+import GlobalErrorFallback from "./components/GlobalErrorFallback";
 // import Dashboard from "./pages/shared/Dashboard"; // We'll make this dynamic
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <PublicLayout />, 
+    errorElement: <GlobalErrorFallback />,
     children: [
       { index: true, element: <Home /> },
       { path: "login", element: <Login /> },
