@@ -32,14 +32,26 @@ const [bookAppointment, { isLoading: isBooking }] = useBookAppointmentMutation()
   });
 
   const handleFinalConfirm = async () => {
+
+    // 1. Safety check: make sure we have the critical data
+  if (!selectedChild?._id || !bookingDetails.time || !bookingDetails.reason) {
+    console.error("Missing booking data");
+    return;
+  }
+    
     try {
-      await bookAppointment({
-        child: selectedChild._id,
-        appointmentDate: new Date(), // Logic here to handle specific date + time
-        reason: bookingDetails.reason,
-        type: bookingDetails.type,
-        time: bookingDetails.time,
-      }).unwrap();
+
+      const payload = {
+      child: selectedChild._id, // Must be the MongoDB ObjectId string
+      appointmentDate: new Date().toISOString(), // Use ISO string for better compatibility
+      time: bookingDetails.time,
+      reason: bookingDetails.reason,
+      type: bookingDetails.type || 'Physical',
+    };
+
+    console.log("Sending Payload:", payload); // Check this in your browser console!
+
+      await bookAppointment(payload).unwrap();
 
       // Redirect or Success View
       setStep(4);

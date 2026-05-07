@@ -7,6 +7,10 @@ export const createAppointment = async (req, res) => {
   try {
     const { child, appointmentDate, reason, type } = req.body;
 
+    if (!req.user?._id) {
+      return res.status(401).json({ message: "User not authenticated" });
+    }
+
     // 1. Check for scheduling conflicts for this specific child
     const conflict = await Appointment.findOne({
       child,
@@ -28,6 +32,11 @@ export const createAppointment = async (req, res) => {
 
     res.status(201).json({ status: "success", data: appointment });
   } catch (error) {
-    res.status(400).json({ status: "fail", message: error.message });
+    console.error("Mongoose Error:", error.message);
+    
+    res.status(400).json({
+      status: 'fail',
+      message: error.message || "Invalid appointment data"
+    });;
   }
 };
