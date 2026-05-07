@@ -5,7 +5,8 @@ const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_SERVER_URL || 'http://localhost:5000',
   prepareHeaders: (headers, { getState }) => {
     // Automatically grab the token from authSlice and stick it in the header
-    const token = getState().auth.token;
+    const authState = getState().auth;
+    const token = authState?.token || authState?.userInfo?.token; // Fallback to localStorage
     if (token) {
       headers.set('authorization', `Bearer ${token}`);
     }
