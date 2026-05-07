@@ -1,4 +1,4 @@
-import Child from "../models/child.model";
+import Child from "../models/child.model.js";
 
 // @desc    Add a new child profile
 // @route   POST /api/children
@@ -15,9 +15,10 @@ export const addChild = async (req, res) => {
       medicalHistory 
     } = req.body;
 
+
     // The 'parent' field comes from the logged-in user's ID
     const child = await Child.create({
-      parent: req.user._id, 
+      parent: req.user._id || req.user.id,
       firstName,
       lastName,
       dateOfBirth,
@@ -45,7 +46,7 @@ export const addChild = async (req, res) => {
 export const getChildren = async (req, res) => {
   try {
     // Only find children belonging to this parent
-    const children = await Child.find({ parent: req.user._id }).sort('-createdAt');
+    const children = await Child.find({ parent: req.user._id || req.user.id }).sort('-createdAt');
 
     res.status(200).json({
       status: 'success',
