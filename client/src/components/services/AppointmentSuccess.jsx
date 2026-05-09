@@ -9,7 +9,7 @@ const AppointmentSuccess = ({ appointmentData }) => {
   useEffect(() => {
     // Auto-redirect after 3 seconds
     const timer = setTimeout(() => {
-      navigate('/dashboard/my-appointments');
+      navigate('/app/parent/my-appointments');
     }, 3500);
     return () => clearTimeout(timer);
   }, [navigate]);
@@ -64,7 +64,7 @@ const AppointmentSuccess = ({ appointmentData }) => {
       {/* Manual Redirect Button */}
       <motion.button
         whileHover={{ x: 5 }}
-        onClick={() => navigate('/dashboard/my-appointments')}
+        onClick={() => navigate('/app/parent/my-appointments')}
         className="flex items-center gap-2 text-emerald-600 font-bold text-sm"
       >
         Go to my appointments <ArrowRight size={16} />

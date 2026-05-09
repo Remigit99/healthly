@@ -47,7 +47,7 @@ const router = createBrowserRouter([
             children: [
               { index: true, element: <Dashboard role="parent" /> },
               {
-                path: "dashboard/my-appointments",
+                path: "my-appointments",
                 element: <MyAppointments role="parent" />,
               },
               {
