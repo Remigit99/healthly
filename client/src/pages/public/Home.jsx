@@ -122,10 +122,10 @@ const Home = () => {
                 Book, reschedule, and manage appointments effortlessly
               </p>
 
-              <button className="bg-amber-700  cursor-pointer text-white py-2 px-4 rounded-md hover:bg-amber-800 transition duration-300">
+              <Link to="/app/parent/book-appointment" className="bg-amber-700  cursor-pointer text-white py-2 px-4 rounded-md hover:bg-amber-800 transition duration-300">
                 Book Appointment
                 <FaArrowRight className="inline ml-2" />
-              </button>
+              </Link>
             </div>
 
             <div>
