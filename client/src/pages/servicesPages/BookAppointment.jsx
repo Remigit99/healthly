@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 // import { useNavigate } from "react-router";
-import { useGetChildrenQuery } from "../../store/features/children/ChildrenApiSlice";
+import { useGetChildrenQuery } from "../../store/features/children/childrenApiSlice";
 
 // Local UI State
 import AddChildForm from "../../components/services/AddChildForm";
