@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 // import { useNavigate } from "react-router";
 import { useGetChildrenQuery } from "../../store/features/children/ChildrenApiSlice";
 
-  // Local UI State
+// Local UI State
 import AddChildForm from "../../components/services/AddChildForm";
 import {
   UserPlus,
@@ -23,7 +23,7 @@ const formattedDate = new Intl.DateTimeFormat("en-GB", {
 const BookAppointment = () => {
   // const navigate = useNavigate();
   const { data, isLoading } = useGetChildrenQuery();
-const [bookAppointment, { isLoading: isBooking }] = useBookAppointmentMutation();
+  const [bookAppointment, { isLoading: isBooking }] = useBookAppointmentMutation();
 
   const [selectedChild, setSelectedChild] = useState(null);
   const [step, setStep] = useState(1); // 1: Select Child, 2: Select Slot, 3: Confirm
@@ -39,34 +39,34 @@ const [bookAppointment, { isLoading: isBooking }] = useBookAppointmentMutation()
   const handleFinalConfirm = async () => {
 
     // 1. Safety check: make sure we have the critical data
-  if (!selectedChild?._id || !bookingDetails.time || !bookingDetails.reason) {
-    console.error("Missing booking data");
-    return;
-  }
-    
+    if (!selectedChild?._id || !bookingDetails.time || !bookingDetails.reason) {
+      console.error("Missing booking data");
+      return;
+    }
+
     try {
 
       const payload = {
-      child: selectedChild._id, // Must be the MongoDB ObjectId string
-      appointmentDate: new Date().toISOString(), // Use ISO string for better compatibility
-      time: bookingDetails.time,
-      reason: bookingDetails.reason,
-      type: bookingDetails.type || 'Physical',
-    };
+        child: selectedChild._id, // Must be the MongoDB ObjectId string
+        appointmentDate: new Date().toISOString(), // Use ISO string for better compatibility
+        time: bookingDetails.time,
+        reason: bookingDetails.reason,
+        type: bookingDetails.type || 'Physical',
+      };
 
-    console.log("Sending Payload:", payload); // Check this in your browser console!
+      console.log("Sending Payload:", payload); // Check this in your browser console!
 
       await bookAppointment(payload).unwrap();
 
       // Store data for the success screen
-    setBookedDetails({
-      childName: selectedChild.name,
-      time: bookingDetails.time
-    });
+      setBookedDetails({
+        childName: selectedChild.name,
+        time: bookingDetails.time
+      });
 
       // Redirect or Success View
       setStep(4);
-       // Redirect to appointments page after booking
+      // Redirect to appointments page after booking
     } catch (err) {
       // Error handling logic
       console.error("Booking failed:", err);
@@ -161,7 +161,7 @@ const [bookAppointment, { isLoading: isBooking }] = useBookAppointmentMutation()
           completed={step > 3}
         />
         <ChevronRight size={16} className="text-slate-300" />
-<StepIndicator
+        <StepIndicator
           num={4}
           label="Success"
           active={step === 4}
@@ -179,18 +179,16 @@ const [bookAppointment, { isLoading: isBooking }] = useBookAppointmentMutation()
                 setSelectedChild(child);
                 setStep(2);
               }}
-              className={`flex items-center p-5 rounded-3xl border-2 transition-all text-left group shadow-sm ${
-                selectedChild?._id === child._id
+              className={`flex items-center p-5 rounded-3xl border-2 transition-all text-left group shadow-sm ${selectedChild?._id === child._id
                   ? "border-emerald-500 bg-emerald-50 shadow-emerald-100 shadow-lg"
                   : "border-slate-100 hover:border-emerald-200 bg-white hover:shadow-md"
-              }`}
+                }`}
             >
               <div
-                className={`h-12 w-12 rounded-2xl flex items-center justify-center font-bold mr-4 transition-colors ${
-                  selectedChild?._id === child._id
+                className={`h-12 w-12 rounded-2xl flex items-center justify-center font-bold mr-4 transition-colors ${selectedChild?._id === child._id
                     ? "bg-emerald-600 text-white"
                     : "bg-emerald-100 text-emerald-600 group-hover:bg-emerald-500 group-hover:text-white"
-                }`}
+                  }`}
               >
                 {child.firstName[0]}
               </div>
@@ -267,11 +265,10 @@ const [bookAppointment, { isLoading: isBooking }] = useBookAppointmentMutation()
                   onClick={() =>
                     setBookingDetails({ ...bookingDetails, type: t })
                   }
-                  className={`py-4 rounded-2xl font-bold border-2 transition-all ${
-                    bookingDetails.type === t
+                  className={`py-4 rounded-2xl font-bold border-2 transition-all ${bookingDetails.type === t
                       ? "border-emerald-500 bg-emerald-50 text-emerald-700 shadow-md shadow-emerald-100"
                       : "border-slate-100 text-slate-500 hover:border-emerald-200"
-                  }`}
+                    }`}
                 >
                   {t === "Physical" ? "🏥 Hospital Visit" : "💻 Online Video"}
                 </button>
@@ -293,11 +290,10 @@ const [bookAppointment, { isLoading: isBooking }] = useBookAppointmentMutation()
                     setBookingDetails({ ...bookingDetails, time });
                     setStep(3);
                   }}
-                  className={`py-4 px-4 border-2 rounded-2xl font-bold transition-all ${
-                    !bookingDetails.reason
+                  className={`py-4 px-4 border-2 rounded-2xl font-bold transition-all ${!bookingDetails.reason
                       ? "opacity-40 cursor-not-allowed bg-slate-50 border-slate-100"
                       : "border-slate-100 text-slate-700 hover:border-emerald-500 hover:bg-emerald-500 hover:text-white hover:shadow-lg"
-                  }`}
+                    }`}
                 >
                   {time}
                 </button>
@@ -351,11 +347,10 @@ const [bookAppointment, { isLoading: isBooking }] = useBookAppointmentMutation()
                   </div>
                 </div>
                 <div
-                  className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide ${
-                    bookingDetails.type === "Physical"
+                  className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide ${bookingDetails.type === "Physical"
                       ? "bg-blue-100 text-blue-700"
                       : "bg-purple-100 text-purple-700"
-                  }`}
+                    }`}
                 >
                   {bookingDetails.type} Visit
                 </div>
@@ -436,7 +431,7 @@ const [bookAppointment, { isLoading: isBooking }] = useBookAppointmentMutation()
         </div>
       )}
 
-{step === 4 && <AppointmentSuccess appointmentData={bookedDetails} />}
+      {step === 4 && <AppointmentSuccess appointmentData={bookedDetails} />}
 
     </div>
   );
@@ -447,13 +442,12 @@ const StepIndicator = ({ num, label, active, completed }) => (
     className={`flex items-center space-x-2 transition-all duration-300 ${active ? "opacity-100 scale-105" : "opacity-50"}`}
   >
     <div
-      className={`h-9 w-9 rounded-xl flex items-center justify-center font-bold text-sm transition-all ${
-        completed
+      className={`h-9 w-9 rounded-xl flex items-center justify-center font-bold text-sm transition-all ${completed
           ? "bg-emerald-600 text-white shadow-lg shadow-emerald-100"
           : active
             ? "bg-slate-800 text-white shadow-lg shadow-slate-200"
             : "bg-slate-100 text-slate-400"
-      }`}
+        }`}
     >
       {completed ? <CheckCircle size={18} /> : num}
     </div>
