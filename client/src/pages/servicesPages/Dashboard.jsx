@@ -13,7 +13,7 @@
 
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import {  AnimatePresence } from 'motion/react';
 import { 
   Search, Bell, Plus, Calendar, FileText, 
   ArrowRight, Activity, TrendingUp, MoreHorizontal 

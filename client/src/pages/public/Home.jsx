@@ -145,10 +145,10 @@ const Home = () => {
                 High-definition, encrypted video calls for secure consultations.
               </p>
 
-              <button className="bg-amber-700  cursor-pointer text-white py-2 px-4 rounded-md hover:bg-amber-800 transition duration-300">
+              <Link to="/app/parent" className="bg-amber-700  cursor-pointer text-white py-2 px-4 rounded-md hover:bg-amber-800 transition duration-300">
                 Call Now
                    <FaArrowRight className="inline ml-2" />
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -160,10 +160,10 @@ const Home = () => {
                 Secure access to your child's health records.
               </p>
 
-              <button className="bg-amber-700  cursor-pointer text-white py-2 px-4 rounded-md hover:bg-amber-800 transition duration-300">
+              <Link to="/app/parent/MedicalRecords" className="bg-amber-700  cursor-pointer text-white py-2 px-4 rounded-md hover:bg-amber-800 transition duration-300">
                 Manage Record
                 <FaArrowRight className="inline ml-2" />
-              </button>
+              </Link>
             </div>
 
             <div>
@@ -183,10 +183,10 @@ const Home = () => {
                 Convenient prescription handling and renewals
               </p>
 
-              <button className="bg-amber-700  cursor-pointer text-white py-2 px-4 rounded-md hover:bg-amber-800 transition duration-300">
+              <Link to="/app/parent/PharmacyPlaces" className="bg-amber-700  cursor-pointer text-white py-2 px-4 rounded-md hover:bg-amber-800 transition duration-300">
                 Get Care
                 <FaArrowRight className="inline ml-2" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>

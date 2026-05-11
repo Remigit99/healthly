@@ -18,6 +18,10 @@ import  Dashboard  from "./pages/servicesPages/Dashboard";
 import MyAppointments from "./pages/servicesPages/MyAppointments";
 import Profile from "./components/services/Profile";
 import MedicalRecords from "./components/services/MedicalRecords";
+import PharmacyPlaces from "./components/services/PharmacyPlaces";
+import Notifications from "./components/services/Notifications";
+import Payments from "./components/services/Payments";
+import Settings from "./components/services/Settings";
 // import Dashboard from "./pages/shared/Dashboard"; // We'll make this dynamic
 
 const router = createBrowserRouter([
@@ -59,10 +63,10 @@ const router = createBrowserRouter([
               { path: "profile", element: <Profile role="parent" /> },
               // { path: "my-appointments", element: <MyAppointments /> },
               { path: "records", element: <MedicalRecords role="parent" /> },
-              // { path: "pharmacy", element: <PharmacyPlaceholder /> },
-              // { path: "notifications", element: <Notifications /> },
-              // { path: "payments", element: <Payments /> },
-              // { path: "settings", element: <Settings /> },
+              { path: "pharmacy", element: <PharmacyPlaces /> },
+              { path: "notifications", element: <Notifications /> },
+              { path: "payments", element: <Payments /> },
+              { path: "settings", element: <Settings /> },
             ],
           },
           // {

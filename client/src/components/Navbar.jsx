@@ -45,14 +45,14 @@ const Navbar = () => {
             {isOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-xl z-50">
                 <Link 
-                  to={user.role === 'parent' ? '/parent-dashboard' : '/doctor-dashboard'} 
+                  to={user.role === 'parent' ? '/app/parent/dashboard' : '/app/doctor/dashboard'} 
                   className="block px-4 py-2 hover:bg-blue-50 text-gray-700"
                   onClick={() => setIsOpen(false)}
                 >
                   Dashboard
                 </Link>
                 <Link 
-                  to="/profile" 
+                  to="/app/parent/profile" 
                   className="block px-4 py-2 hover:bg-blue-50 text-gray-700"
                   onClick={() => setIsOpen(false)}
                 >
