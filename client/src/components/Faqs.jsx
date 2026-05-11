@@ -5,29 +5,29 @@ const Faqs = () => {
 
   const faqs = [
     {
-      question: "What is EchoMed?",
+      question: "What is Healthly?",
       answer:
-        "EchoMed is a comprehensive health management platform designed to provide seamless care coordination and personalized health insights for patients and providers.",
+        "Healthly is a comprehensive health management platform designed to provide seamless care coordination and personalized health insights for patients and providers.",
     },
     {
-      question: "How do I schedule an appointment on EchoMed?",
+      question: "How do I schedule an appointment on Healthly?",
       answer:
         "You can schedule an appointment by navigating to the 'Appointments' section and selecting a available time slot.",
     },
     {
-      question: "Is my child's health information secure on EchoMed?",
+      question: "Is my child's health information secure on Healthly?",
       answer:
-        "Yes, EchoMed uses industry-standard encryption and security measures to protect your child's health information.",
+        "Yes, Healthly uses industry-standard encryption and security measures to protect your child's health information.",
     },
      {
-      question: "What types of services does EchoMed provide?",
+      question: "What types of services does Healthly provide?",
       answer:
-        "EchoMed provides comprehensive pediatric healthcare specifically for infants, children, and adolescents. Our services include routine well-child checkups, developmental milestone tracking, immunizations, and treatment for common childhood illnesses.",
+        "Healthly provides comprehensive pediatric healthcare specifically for infants, children, and adolescents. Our services include routine well-child checkups, developmental milestone tracking, immunizations, and treatment for common childhood illnesses.",
     },
      {
-      question: "Can I use EchoMed for emergencies?",
+      question: "Can I use Healthly for emergencies?",
       answer:
-        "No. EchoMed is a diagnostic and screening service, not an emergency medical provider. If you are experiencing symptoms of a life-threatening emergency—such as severe chest pain, shortness of breath, or signs of a stroke—please call your local emergency number",
+        "No. Healthly is a diagnostic and screening service, not an emergency medical provider. If you are experiencing symptoms of a life-threatening emergency—such as severe chest pain, shortness of breath, or signs of a stroke—please call your local emergency number",
     },
     
   ];

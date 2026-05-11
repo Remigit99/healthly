@@ -36,5 +36,5 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 export const apiSlice = createApi({
   baseQuery: baseQueryWithReauth,
   tagTypes: ['User', 'Appointment', 'Patient'], // Used for "auto-refreshing" data
-  endpoints: (builder) => ({}), // We will "inject" endpoints here to keep files clean
+  endpoints: (builder) => ({}), // I will "inject" endpoints here to keep files clean
 });
