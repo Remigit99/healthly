@@ -1,3 +1,4 @@
+
 import { apiSlice } from "../../api/apiSlice";
 
 export const servicesApiSlice = apiSlice.injectEndpoints({
@@ -19,8 +20,13 @@ export const servicesApiSlice = apiSlice.injectEndpoints({
       query: () => "/api/appointments/my-appointments",
       providesTags: ["Appointment"],
     }),
+
+    getParentDashboard: builder.query({
+      query: () => "/api/parent/parent-dashboard",
+      providesTags: ["Dashboard"],
+    }),
   }),
 });
 
-export const { useGetChildrenQuery, useBookAppointmentMutation } =
+export const { useGetChildrenQuery, useBookAppointmentMutation, useGetParentDashboardQuery } =
   servicesApiSlice;

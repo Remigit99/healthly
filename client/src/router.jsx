@@ -14,8 +14,10 @@ import GoVerifyEmail from "./pages/auth/GoVerifyEmail";
 import NotFound from "./pages/shared/NotFound";
 import BookAppointment from "./pages/servicesPages/BookAppointment";
 import GlobalErrorFallback from "./components/GlobalErrorFallback";
-import { Dashboard } from "./pages/servicesPages/Dashboard";
+import  Dashboard  from "./pages/servicesPages/Dashboard";
 import MyAppointments from "./pages/servicesPages/MyAppointments";
+import Profile from "./components/services/Profile";
+import MedicalRecords from "./components/services/MedicalRecords";
 // import Dashboard from "./pages/shared/Dashboard"; // We'll make this dynamic
 
 const router = createBrowserRouter([
