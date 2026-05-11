@@ -54,6 +54,13 @@ const router = createBrowserRouter([
                 path: "book-appointment",
                 element: <BookAppointment role="parent" />,
               },
+              { path: "profile", element: <Profile role="parent" /> },
+              // { path: "my-appointments", element: <MyAppointments /> },
+              { path: "records", element: <MedicalRecords role="parent" /> },
+              // { path: "pharmacy", element: <PharmacyPlaceholder /> },
+              // { path: "notifications", element: <Notifications /> },
+              // { path: "payments", element: <Payments /> },
+              // { path: "settings", element: <Settings /> },
             ],
           },
           // {
