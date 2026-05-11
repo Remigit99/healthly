@@ -92,10 +92,10 @@ const Dashboard = () => {
               }`}
             >
               <div className="w-12 h-12 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold text-xl uppercase">
-                {child.name[0]}
+                {child.lastName ? child.lastName[0] : child.name[0]}
               </div>
               <div>
-                <p className="font-black text-slate-800 leading-none mb-1">{child.name}</p>
+                <p className="font-black text-slate-800 leading-none mb-1">{child.lastName || child.name}</p>
                 <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">{child.age} Years</p>
               </div>
             </motion.div>
