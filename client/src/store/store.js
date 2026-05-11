@@ -2,9 +2,10 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { apiSlice } from './api/apiSlice';
 import authReducer from './features/auth/authSlice';
 import {persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER} from 'redux-persist';
+// import storageSession from 'redux-persist/lib/storage/session';
   
 
-const customStorage = {
+const customSessionStorage = {
   getItem: (key) => {
     return Promise.resolve(localStorage.getItem(key));
   },
@@ -19,8 +20,10 @@ const customStorage = {
 const persistConfig = {
   key: 'root',
   version: 1,
-  storage: customStorage,
-  whitelist: ['auth'], // Only persist the auth slice
+  // storage: customStorage,
+  storage: customSessionStorage,
+  // whitelist: ['auth'], // Only persist the auth slice
+  blacklist: ['auth']
 };
 
 const rootReducer = combineReducers({
