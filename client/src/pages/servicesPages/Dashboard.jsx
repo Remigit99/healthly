@@ -25,6 +25,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const { data, isLoading } = useGetParentDashboardQuery();
   const [activeChildId, setActiveChildId] = useState(null);
+  console.log("Dashboard Data:", data); // Debugging log to check the structure of the fetched data
 
   // loading state
   if (isLoading) return <div className="p-10 text-center animate-pulse text-slate-400">Loading Command Center...</div>;

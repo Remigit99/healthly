@@ -9,7 +9,7 @@ import router from './routes/user.route.js';
 import childrenRouter from './routes/child.route.js';
 import { appointmentRouter } from './routes/appointment.route.js';
 // import userRoutes from "./routes/user.route.js"
-import parentRoutes from "./routes/parent.parent.route.js"
+import parentRoutes from "./routes/parent.dashboard.route.js"
 
 dotenv.config()
 
@@ -34,8 +34,8 @@ app.use(cors({
 
 app.use("/api/user", router)
 app.use("/api/children", childrenRouter)
-app.use("/api/appointments", appointmentRouter)
 app.use("/api/parent", parentRoutes)
+app.use("/api/appointments", appointmentRouter)
 
 const PORT = process.env.PORT || 3300
 
