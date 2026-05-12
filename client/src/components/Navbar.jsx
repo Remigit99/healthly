@@ -45,7 +45,7 @@ const Navbar = () => {
             {isOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-xl z-50">
                 <Link 
-                  to={user.role === 'parent' ? '/app/parent/dashboard' : '/app/doctor/dashboard'} 
+                  to={user.role === 'parent' ? '/app/parent' : '/app/doctor'} 
                   className="block px-4 py-2 hover:bg-blue-50 text-gray-700"
                   onClick={() => setIsOpen(false)}
                 >

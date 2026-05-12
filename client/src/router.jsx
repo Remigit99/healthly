@@ -15,7 +15,7 @@ import NotFound from "./pages/shared/NotFound";
 import BookAppointment from "./pages/servicesPages/BookAppointment";
 import GlobalErrorFallback from "./components/GlobalErrorFallback";
 import  Dashboard  from "./pages/servicesPages/Dashboard";
-import MyAppointments from "./pages/servicesPages/MyAppointments";
+import MyAppointments from "./components/services/MyAppointments";
 import Profile from "./components/services/Profile";
 import MedicalRecords from "./components/services/MedicalRecords";
 import PharmacyPlaces from "./components/services/PharmacyPlaces";
