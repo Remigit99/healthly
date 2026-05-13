@@ -11,6 +11,8 @@ import {
   ChevronRightIcon
 } from "lucide-react"
 
+import { useGetParentDashboardQuery } from "../../store/features/services/servicesApiSlice";
+
 import { FaWpforms, FaUserDoctor } from "react-icons/fa6";
 
 const profileLinks = [
@@ -60,6 +62,13 @@ const profileLinks = [
 
 
 const Profile = () => {
+  const {isLoading, data: parentDashboardData } = useGetParentDashboardQuery();
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  console.log("Parent Dashboard Data:", parentDashboardData);
+
   return (
     <div className="p-6 text-center">
       <h1 className="text-2xl font-bold mb-24">Profile</h1>
@@ -75,7 +84,7 @@ const Profile = () => {
               className="rounded-full border-2 border-gray-300 "
             />
 
-            <h2 className="text-xl font-semibold mt-4">John Doe</h2>
+            <h2 className="text-xl font-semibold mt-4">{parentDashboardData?.children[0].firstName || 'John Doe'}</h2>
 
           </div>
 

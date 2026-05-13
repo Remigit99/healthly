@@ -16,7 +16,8 @@ import BookAppointment from "./pages/servicesPages/BookAppointment";
 import GlobalErrorFallback from "./components/GlobalErrorFallback";
 import  Dashboard  from "./pages/servicesPages/Dashboard";
 import MyAppointments from "./components/services/MyAppointments";
-import Profile from "./components/services/Profile";
+// import Profile from "./components/services/Profile";
+import Profile2 from "./components/services/Profile2";
 import MedicalRecords from "./components/services/MedicalRecords";
 import PharmacyPlaces from "./components/services/PharmacyPlaces";
 import Notifications from "./components/services/Notifications";
@@ -60,7 +61,8 @@ const router = createBrowserRouter([
                 path: "book-appointment",
                 element: <BookAppointment role="parent" />,
               },
-              { path: "profile", element: <Profile role="parent" /> },
+              // { path: "profile", element: <Profile role="parent" /> },
+              { path: "profile", element: <Profile2 role="parent" /> },
               // { path: "my-appointments", element: <MyAppointments /> },
               { path: "records", element: <MedicalRecords role="parent" /> },
               { path: "pharmacy", element: <PharmacyPlaces role="parent" /> },
