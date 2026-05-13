@@ -1,16 +1,4 @@
-// import DashboardMain from "../../components/services/DashboardMain"
-// import Sidebar from "../../components/services/Sidebar"
-
-
-// export const Dashboard = () => {
-//   return (
-//     <div className="grid grid-cols-[auto_1fr]">
-//       <Sidebar/>
-//       <DashboardMain/>
-//     </div>
-//   )
-// }
-
+import Logo from "/healthly_main_logo.png";
 
 import { useState } from 'react';
 import { Link } from 'react-router';
@@ -20,21 +8,24 @@ import {
   ArrowRight, Activity, TrendingUp, MoreHorizontal
 } from 'lucide-react';
 import { useGetParentDashboardQuery } from '../../store/features/services/servicesApiSlice';
-import age from '../../lib/getYearsOld';
+import {calculateYearsOld as age} from '../../lib/getYearsOld';
 import { Links, useNavigate } from 'react-router';
 import { selectCurrentUser } from '../../store/features/auth/authSlice';
+import { Greeting } from "../../lib/getYearsOld";
 import { useSelector } from 'react-redux';
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const { data, isLoading } = useGetParentDashboardQuery();
   const [activeChildId, setActiveChildId] = useState(null);
-  // console.log("Dashboard Data:", data); // Debugging log to check the structure of the fetched data
+
   const user = useSelector(selectCurrentUser);
-  // console.log("Current User:", user); // Debugging log to check the current user data
+ 
 
   // loading state
-  if (isLoading) return <div className="p-10 text-center animate-pulse text-slate-400">Loading Dashboard...</div>;
+  if (isLoading) return <div className="p-10 text-center animate-pulse text-slate-400">
+    <img src={Logo} alt="Healthly Logo" className="w-24 h-16 mx-auto mb-4" />
+  </div>;
 
   const children = data?.children || [];
   const upcoming = data?.nextAppointment;
@@ -52,7 +43,7 @@ const Dashboard = () => {
       <header className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl md:text-3xl font-black text-slate-800 tracking-tight">
-            Good morning, {user.firstName}!
+            {Greeting()}, {user.firstName}!
           </h1>
           <p className="text-slate-500 font-medium">Welcome to your family health overview.</p>
         </div>
@@ -94,8 +85,8 @@ const Dashboard = () => {
               whileTap={{ scale: 0.95 }}
               onClick={() => setActiveChildId(child._id)}
               className={`shrink-0 cursor-pointer p-4 rounded-3xl border-2 transition-all flex items-center gap-4 min-w-45 ${activeChild?._id === child._id
-                  ? 'border-emerald-500 bg-emerald-50/50 shadow-sm'
-                  : 'border-transparent bg-white shadow-sm hover:border-slate-200'
+                ? 'border-emerald-500 bg-emerald-50/50 shadow-sm'
+                : 'border-transparent bg-white shadow-sm hover:border-slate-200'
                 }`}
             >
               <div className="w-12 h-12 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold text-xl uppercase">

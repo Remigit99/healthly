@@ -1,4 +1,4 @@
-const calculateYearsOld = (birthdateString) => {
+export const calculateYearsOld = (birthdateString) => {
   if (!birthdateString) return 0;
 
   const today = new Date();
@@ -18,4 +18,21 @@ const calculateYearsOld = (birthdateString) => {
   return ageYears;
 };
 
-export default calculateYearsOld;
+
+export const Greeting = () => {
+  // Get the current local hour (0 to 23)
+  const currentHour = new Date().getHours();
+  
+  let greetingText = '';
+
+  // Determine the correct greeting based on 24-hour ranges
+  if (currentHour < 12) {
+    greetingText = 'Good Morning';
+  } else if (currentHour < 18) {
+    greetingText = 'Good Afternoon';
+  } else {
+    greetingText = 'Good Evening';
+  }
+
+  return greetingText;
+};

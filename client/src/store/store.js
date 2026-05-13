@@ -23,7 +23,7 @@ const persistConfig = {
   // storage: customStorage,
   storage: customSessionStorage,
   // whitelist: ['auth'], // Only persist the auth slice
-  blacklist: ['auth']
+  whitelist: ['auth']
 };
 
 const rootReducer = combineReducers({
